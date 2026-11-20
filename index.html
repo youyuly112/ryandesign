@@ -1,0 +1,1609 @@
+<!doctype html>
+<!-- FINENESS 私宅全案設計 — 多文件部署版：index.html 與 assets/ 資料夾須保持同級、整包上傳，勿合併為單一 HTML 檔（Cloudflare Pages 單檔上限 25 MiB）。 -->
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="color-scheme" content="dark">
+<link rel="icon" href="data:,">
+<title>劉力寧設計研究室 — 高端全案室內設計師 · 私宅全案設計</title>
+<link href="https://api.fontshare.com/v2/css?f[]=chillax@400,500,600,700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@300;400;500;600;700;900&family=Noto+Sans+TC:wght@300;400;500;600;700;900&family=Noto+Serif+TC:wght@600;900&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#16110b; --bg2:#1e1710; --panel:#221a12; --panel2:#2a2115;
+  --gold:#c9a86a; --gold2:#e6cd93; --gold-dim:#9a7f4e;
+  --ink:#f3ecdd; --ink2:#cfc4ab; --ink3:#9c8f74;
+  --line:rgba(201,168,106,.28); --red:#c8452c;
+  --serif:'Noto Serif TC',serif;
+  --sans:'Noto Sans TC','Noto Sans SC',sans-serif;
+  --en:'Chillax','Noto Sans TC','Noto Sans SC',sans-serif;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--sans);font-weight:300;line-height:1.75;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{display:block;max-width:100%}
+button,[role="button"],select,input,summary{min-height:2.25rem}
+.en{font-family:var(--en)}
+.wrap{max-width:1720px;margin:0 auto;padding:0 clamp(18px,4vw,56px)}
+section{position:relative;padding:clamp(64px,9vw,120px) 0}
+.kicker{font-family:var(--en);letter-spacing:.42em;font-size:12px;color:var(--gold);text-transform:uppercase;margin:0 0 14px}
+h2.title{font-size:clamp(30px,4.6vw,54px);font-weight:900;line-height:1.25;margin:0 0 18px;letter-spacing:.04em}
+h2.title .gold{color:var(--gold)}
+.lede{color:var(--ink2);font-size:clamp(15px,1.6vw,18px);max-width:46em;margin:0}
+/* emphasis dots (著重號) under 不套模板 in the cases lede: one filled dot centred under each of the four glyphs, in the text's own colour */
+.lede .emdot{-webkit-text-emphasis-style:filled circle;-webkit-text-emphasis-position:under;text-emphasis-style:filled circle;text-emphasis-position:under}
+.hairline{width:64px;height:1px;background:var(--gold);margin:26px 0 0}
+.rv{opacity:0;transform:translateY(26px);transition:opacity .9s ease,transform .9s cubic-bezier(.2,.7,.2,1)}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}html{scroll-behavior:auto}}
+/* progress + nav */
+#progress{position:fixed;top:0;left:0;height:2px;background:linear-gradient(90deg,var(--gold-dim),var(--gold2));width:0;z-index:60}
+nav.chapters{position:fixed;left:0;right:0;bottom:0;z-index:55;background:rgba(18,13,8,.88);backdrop-filter:blur(10px);border-top:1px solid var(--line)}
+nav.chapters .wrap{display:flex;gap:4px;overflow-x:auto;padding-top:8px;padding-bottom:calc(8px + env(safe-area-inset-bottom));scrollbar-width:none}
+nav.chapters a{color:var(--ink2);text-decoration:none;font-size:13px;letter-spacing:.14em;padding:8px 12px;white-space:nowrap;border-radius:2px;min-height:36px;display:flex;align-items:center}
+nav.chapters a:hover,nav.chapters a.on{color:var(--gold2);background:rgba(201,168,106,.1)}
+body{padding-bottom:56px}
+/* cover */
+.cover{min-height:100svh;display:flex;align-items:stretch;padding:0;overflow:hidden}
+.cover .bg{position:absolute;inset:0}
+.cover .bg img,.cover .bg video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block}
+.cover .bg video{z-index:1}
+/* the cover ground is now the user's bright hand-reach video (first frame as the still beneath it), so the old dark photo vignette is gone: a light-grey veil pools at the bottom-right to carry the studio name block, with a lighter pool at the bottom-left under the scroll hint — kept light, never a dark wash */
+.cover .shade{position:absolute;inset:0;z-index:2;background:linear-gradient(38deg,rgba(146,142,136,.42) 0%,rgba(146,142,136,0) 34%),linear-gradient(232deg,rgba(146,142,136,0) 44%,rgba(146,142,136,.32) 74%,rgba(134,130,124,.55) 100%),linear-gradient(0deg,rgba(140,136,130,.28) 0%,rgba(140,136,130,0) 30%)}
+.cover .inner{position:relative;z-index:3;width:100%;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;align-items:flex-end;text-align:right;padding-top:5.5vh;padding-bottom:calc(60px + env(safe-area-inset-bottom,0px) + 4.5vh)}
+.cover .brandblock{display:flex;flex-direction:column;align-items:flex-end}
+.cover .brandname{margin:0;font-size:clamp(36px,5.4vw,100px);font-weight:700;line-height:1.2;letter-spacing:.14em;margin-right:-.14em;color:#fff;white-space:nowrap;text-shadow:0 2px 16px rgba(58,52,42,.65),0 1px 3px rgba(58,52,42,.5)}
+.cover .brandname .brandgold{color:var(--gold2)}
+@keyframes rise{to{opacity:1;transform:none}}
+.cover .sub{margin:26px -.5em 10px 0;font-size:clamp(20px,2.6vw,30px);letter-spacing:.5em;font-weight:500;color:#fff;text-shadow:0 2px 14px rgba(58,52,42,.7),0 1px 3px rgba(58,52,42,.55)}
+.cover .sub2{margin:16px -.34em 0 0;font-family:var(--en);letter-spacing:.34em;font-size:clamp(13px,1.35vw,22px);color:#e9cf96;text-shadow:0 1px 10px rgba(58,52,42,.6);text-transform:uppercase}
+/* the scroll hint sits at the bottom-left, opposite the brand block, and is deliberately prominent — it is the cover's one instruction, so it is set larger and darker than a caption, with a soft light halo to stay legible over the bright hand video */
+.cover .scrollhint{align-self:flex-start;margin:30px auto 0 0;padding:0;color:rgba(48,40,26,.94);font-size:19px;font-weight:600;letter-spacing:.3em;display:flex;align-items:center;gap:16px;white-space:nowrap;text-shadow:0 1px 10px rgba(255,255,255,.85),0 0 22px rgba(255,255,255,.5)}
+.cover .scrollhint::after{content:"";width:72px;height:2px;background:rgba(122,94,40,.8)}
+.cover .scrollhint .dn{color:#7d5f24;font-size:26px;animation:dn 2.2s ease-in-out infinite}
+/* cover foot: the scroll hint (left) and the brand block (right) share one bottom row, aligned on their bottom edges so the hint's line sits on the same baseline as the brand block's last line (LIU LINING DESIGN STUDIO) — one shared foot line across the cover. On narrow screens the two cannot share a line (the brand block spans the full width), so the row stacks again, brand first, hint below-left as before */
+.cover .coverfoot{display:flex;align-items:flex-end;justify-content:space-between;gap:clamp(20px,4vw,64px);width:100%}
+.cover .coverfoot .brandblock{order:2;flex:0 1 auto;min-width:0}
+.cover .coverfoot .scrollhint{order:1;flex:none;align-self:auto;margin-right:0}
+@media(max-width:820px){.cover .coverfoot{flex-direction:column;align-items:stretch}.cover .coverfoot .brandblock{order:1;align-self:flex-end}.cover .coverfoot .scrollhint{order:2;align-self:flex-start}}
+@media (max-width:640px){.cover .brandname{font-size:min(33px,8.8vw);letter-spacing:.08em;margin-right:-.08em}.cover .scrollhint{font-size:15px;letter-spacing:.14em;gap:10px;margin-top:22px}.cover .scrollhint::after{width:34px}.cover .scrollhint .dn{font-size:21px}}
+@keyframes dn{0%,100%{transform:translateY(0)}50%{transform:translateY(5px)}}
+@media (prefers-reduced-motion:reduce){.cover .scrollhint .dn{animation:none}}
+/* why */
+.why{padding:0;min-height:94svh;display:flex;align-items:flex-start;overflow:hidden}
+.why .bg{position:absolute;inset:0}
+.why .bg img{width:100%;height:100%;object-fit:cover}
+.why .shade{position:absolute;inset:0;background:linear-gradient(90deg,rgba(14,10,5,.94) 26%,rgba(14,10,5,.5) 62%,rgba(14,10,5,.22))}
+.why .inner{position:relative;padding:12.5vh 0 96px;width:100%}
+.why h2{font-family:var(--en);font-weight:600;font-size:clamp(54px,8.6vw,118px);line-height:1.06;margin:0 0 22px;color:#fff}
+.why .five{display:flex;flex-direction:column;gap:30px;margin-top:56px;max-width:350px}
+.why .five div{border-left:1px solid var(--gold);padding-left:14px}
+.why .five b{display:block;font-family:var(--en);font-weight:500;letter-spacing:.18em;font-size:12px;color:var(--gold2);margin-bottom:6px}
+.why .five span{font-size:15px;font-weight:500}
+/* the five points cascade: once TEAM is in (one scroll after the title, on the earlier line set by fiveIO below), the remaining four follow automatically at a steady beat instead of waiting for a fresh scroll each — their transition delays do the sequencing */
+.why .five>div:nth-child(2){transition-delay:.18s}
+.why .five>div:nth-child(3){transition-delay:.36s}
+.why .five>div:nth-child(4){transition-delay:.54s}
+.why .five>div:nth-child(5){transition-delay:.72s}
+/* offices — restored to the original slide: three full-height city panels, English names centred over the translucent mask band, LOCATION block bottom-left */
+.offices{padding:0;background:#0b0805}
+.cityfull{position:relative;display:grid;grid-template-columns:1.55fr .8fr .8fr;gap:6px}
+.citypanel{margin:0;position:relative;overflow:hidden;height:max(560px,96svh);opacity:0;transform:translateX(72px);transition:opacity 1s ease,transform 1.15s cubic-bezier(.2,.7,.2,1)}
+.citypanel:nth-child(2){transition-delay:.16s}.citypanel:nth-child(3){transition-delay:.32s}
+.citypanel.in{opacity:1;transform:none}
+.citypanel>img{width:100%;height:100%;object-fit:cover;transition:transform .6s cubic-bezier(.16,1,.3,1)}
+.citypanel:hover>img{transform:scale(1.04)}
+.citypanel .mask{position:absolute;inset:0;background:linear-gradient(90deg,rgba(8,6,4,0) 20%,rgba(8,6,4,.44) 50%,rgba(8,6,4,0) 80%),linear-gradient(180deg,rgba(8,6,4,.22),rgba(8,6,4,0) 38%,rgba(8,6,4,.38));pointer-events:none}
+.citypanel .cname{position:absolute;left:0;right:0;top:41%;text-align:center;font-family:var(--en);font-weight:500;letter-spacing:.13em;font-size:clamp(23px,3.1vw,42px);color:#fff;text-shadow:0 2px 24px rgba(0,0,0,.55);opacity:0;transform:translateY(18px);transition:opacity .9s ease .55s,transform .9s cubic-bezier(.34,1.45,.64,1)}
+.citypanel.in .cname{opacity:1;transform:none}
+/* hover: the centred city name swells to 1.3x and settles with a damped spring (overshoot easing) — plainly visible at a glance, in both directions */
+.citypanel:hover .cname{transform:scale(1.3)}
+.locbox{position:absolute;left:0;bottom:0;z-index:4;display:flex;gap:clamp(18px,2.6vw,34px);align-items:flex-start;background:rgba(7,5,3,.58);padding:22px clamp(20px,2.6vw,34px);max-width:min(680px,94vw);opacity:0;transform:translateY(14px);transition:opacity 1s ease .8s,transform 1s ease .8s}
+.locbox.in{opacity:1;transform:none}
+.locbox .loc{font-family:var(--en);letter-spacing:.3em;font-size:clamp(19px,2vw,26px);color:#fff;line-height:1.25;white-space:nowrap}
+.locbox .loc small{display:block;color:var(--gold);font-size:9.5px;letter-spacing:.36em;margin-top:6px}
+.locbox p{margin:0;color:#eae3d0;font-size:12.5px;line-height:1.7;letter-spacing:.05em}
+.locbox p .enz{display:block;font-family:var(--en);font-size:10.5px;letter-spacing:.1em;line-height:1.65}
+@media(max-width:820px){.cityfull{grid-template-columns:1fr}.citypanel{height:56svh}.locbox{position:static;max-width:none}}
+@media (prefers-reduced-motion:reduce){.citypanel,.locbox,.citypanel .cname{opacity:1;transform:none;transition:none}}
+/* map */
+.mapbox{margin-top:34px;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:radial-gradient(120% 130% at 50% 0%,#241a0f 0%,#0d0a06 62%)}
+.mapwrap{position:relative;transform:scale(1.1);transition:transform 1.9s cubic-bezier(.2,.7,.2,1)}
+.mapwrap.settle{transform:scale(1)}
+.mapwrap>img{width:100%;object-fit:contain}
+.pin{position:absolute;transform:translate(-50%,-50%) scale(.25);opacity:0;z-index:3;display:flex;align-items:center;gap:6px;pointer-events:none;transition:opacity .45s ease,transform .5s cubic-bezier(.34,1.45,.64,1)}
+.pin.on{opacity:1;transform:translate(-50%,-50%) scale(1)}
+@media (prefers-reduced-motion:reduce){.mapwrap{transform:none;transition:none}.pin{opacity:1;transform:translate(-50%,-50%) scale(1);transition:none}}
+.pin i{width:7px;height:7px;border-radius:50%;background:#d8573a;box-shadow:0 0 0 3px rgba(216,87,58,.22);flex:none}
+.pin.big i{background:var(--gold);box-shadow:0 0 0 3px rgba(201,168,106,.25)}
+.pin.major i{width:12px;height:12px;background:var(--gold);box-shadow:0 0 0 5px rgba(201,168,106,.28)}
+.pin em{font-style:normal;font-size:12px;letter-spacing:.16em;color:var(--gold2);text-shadow:0 1px 8px rgba(0,0,0,.95);font-weight:500}
+.mapstats{display:flex;gap:clamp(24px,5vw,64px);margin-top:34px;flex-wrap:wrap}
+/* the three stats no longer wait for their own scroll trigger: mapIO adds .in to the band shortly after the map settles and the pins start dropping, and the three figures then rise one after another */
+.mapstats>div{opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .8s cubic-bezier(.2,.7,.2,1)}
+.mapstats.in>div{opacity:1;transform:none}
+.mapstats.in>div:nth-child(2){transition-delay:.22s}
+.mapstats.in>div:nth-child(3){transition-delay:.44s}
+@media (prefers-reduced-motion:reduce){.mapstats>div{opacity:1;transform:none;transition:none}}
+.mapstats div b{font-family:var(--en);font-size:clamp(30px,4vw,46px);font-weight:600;color:var(--gold2);display:block;line-height:1.1}
+.mapstats div span{color:var(--ink3);font-size:13px;letter-spacing:.2em}
+/* services */
+.services{background:var(--bg2)}
+.strip-row{display:flex;gap:10px;margin-top:40px}
+.strip{flex:1 1 0;height:min(56vh,520px);min-height:340px;position:relative;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:var(--panel);cursor:pointer;padding:0;text-align:left;color:var(--ink);font-family:var(--sans);transition:flex .55s cubic-bezier(.2,.7,.2,1),border-color .3s}
+.strip img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:.5;filter:grayscale(.35);transition:opacity .4s}
+.strip::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(14,10,5,.25),rgba(14,10,5,.88) 82%)}
+.strip .vtext{position:absolute;left:50%;bottom:86px;transform:translateX(-50%);writing-mode:vertical-rl;font-size:clamp(17px,1.7vw,22px);font-weight:700;letter-spacing:.42em;z-index:2;white-space:nowrap}
+.strip .ven{position:absolute;left:0;right:0;bottom:14px;z-index:2;text-align:center;font-family:var(--en);font-size:9px;letter-spacing:.14em;color:var(--gold2);padding:0 4px}
+.strip .num{position:absolute;top:12px;left:0;right:0;z-index:2;text-align:center;font-family:var(--en);color:var(--gold);font-size:12px;letter-spacing:.2em}
+.strip.active{flex:2.1 1 0;border-color:var(--gold)}
+.strip.active img{opacity:.85;filter:none}
+.strip:focus-visible{outline:2px solid var(--gold2);outline-offset:2px}
+.strip-panel{position:relative;overflow:hidden;margin-top:14px;border:1px solid var(--line);border-left:3px solid var(--gold);background:var(--panel);padding:20px 24px;border-radius:4px;min-height:76px;display:flex;align-items:center;gap:18px}
+.strip-panel b{font-size:19px;letter-spacing:.2em;white-space:nowrap}
+.strip-panel p{margin:0;color:var(--ink2);font-size:16px}
+.strip-panel.sweep b,.strip-panel.sweep p{animation:panelIn .55s cubic-bezier(.2,.7,.2,1) both}
+.strip-panel.sweep p{animation-delay:.06s}
+.strip-panel.sweep::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(201,168,106,.22),rgba(201,168,106,.05) 55%,transparent 75%);animation:panelWipe .65s ease-out both;pointer-events:none}
+@keyframes panelIn{from{opacity:0;transform:translateX(-30px)}to{opacity:1;transform:none}}
+@keyframes panelWipe{from{transform:translateX(-102%)}to{transform:translateX(102%)}}
+@media (prefers-reduced-motion:reduce){.strip-panel.sweep b,.strip-panel.sweep p,.strip-panel.sweep::after{animation:none}}
+@media(max-width:820px){
+  .strip-row{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}
+  .strip{height:210px;min-height:210px}
+  .strip .vtext{bottom:64px;font-size:15px}
+  .strip .ven{font-size:7.5px;letter-spacing:.05em;line-height:1.5;padding:0 2px}
+  .strip-panel{flex-direction:column;align-items:flex-start;gap:4px}
+}
+/* founders — original slide composition: portrait centre overlapping the big name, bio block at the side, Chinese name + titles at the bottom corner. The section carries no bottom padding, so the last portrait's lower edge lands exactly on the section's bottom edge, as on the slide. */
+#founders,#profile{padding-bottom:0}
+.founder{position:relative;padding:clamp(40px,5vw,64px) 0 clamp(48px,5vw,72px);border-bottom:1px solid var(--line);min-height:clamp(680px,96vh,920px)}
+.founder .photo{position:absolute;left:28.5%;bottom:0;height:94%;z-index:3;opacity:0;transition:opacity 1s ease .2s}
+.founder.in .photo{opacity:1}
+.founder .photo img{height:100%;width:auto;filter:drop-shadow(0 22px 34px rgba(0,0,0,.6)) contrast(1.03)}
+.founder .bigname{position:absolute;top:0;right:1%;z-index:1;font-family:var(--en);font-weight:700;font-size:clamp(84px,15vw,264px);letter-spacing:.04em;color:var(--gold);line-height:.99;margin:0;padding-left:.3em;opacity:0;transform:translateY(-115%);transition:opacity .9s ease,transform 1.55s cubic-bezier(.19,1.28,.32,1)}
+.founder.in .bigname{opacity:1;transform:none}
+.founder .bigname em{font-style:normal;display:inline-block;margin-left:-.3em}
+/* first line of the big name (FAN / RYAN) is the wireframe style from the original slides: hollow gold outline, transparent fill; the second line (ZHANG / LIU) stays solid gold */
+.founder .bigname .ol{color:transparent;-webkit-text-stroke:.021em var(--gold)}
+@supports not (-webkit-text-stroke:1px #000){.founder .bigname .ol{color:var(--gold)}}
+.founder .bio-col{position:absolute;left:0;top:47%;transform:translateY(-50%);width:min(355px,29%);z-index:2;opacity:0;transition:opacity 1s ease .35s}
+.founder.in .bio-col{opacity:1}
+.founder p.bio{color:var(--ink2);font-size:15.5px;margin:0 0 14px;line-height:1.85}
+.founder p.bio-en{color:var(--ink3);font-size:13px;font-family:var(--en);letter-spacing:.02em;line-height:1.7;margin:0}
+.founder .nameblock{position:absolute;right:1%;bottom:7%;z-index:2;text-align:right;opacity:0;transform:translateY(-48vh);transition:opacity .9s ease 0s,transform 1.55s cubic-bezier(.19,1.28,.32,1) .18s}
+.founder.in .nameblock{opacity:1;transform:none}
+.founder h3{font-size:clamp(32px,3.6vw,48px);margin:0 0 8px;font-weight:900;letter-spacing:.14em}
+.founder .role{color:var(--gold);letter-spacing:.3em;font-size:15px;margin:0;line-height:2}
+.founder.flip .bigname{right:auto;left:1%;transform:translateY(-115%);padding-left:0}
+.founder.flip.in .bigname{transform:none}
+.founder.flip .bio-col{left:auto;right:0}
+.founder.flip .photo{left:26.5%}
+.founder.flip .bigname em{margin-left:1.05em}
+.founder.flip .nameblock{right:auto;left:1%;text-align:left}
+/* hover: the big English name and the name/role block sink down together with a damped spring settle — a clearly visible ~44px drop; the small Chinese + English bio rises from below against them, a smaller but still plainly visible ~20px */
+@media(hover:hover) and (min-width:901px) and (prefers-reduced-motion:no-preference){
+  .founder .bigname,.founder .nameblock{transition:opacity .9s ease,transform 1.55s cubic-bezier(.19,1.28,.32,1)}
+.founder .nameblock{transition-delay:0s,.18s}
+  .founder .bio-col{transition:opacity 1s ease .35s,transform .95s cubic-bezier(.3,1.45,.4,1)}
+  .founder:hover .bigname{transform:translateY(44px)}
+  .founder:hover .nameblock{transform:translateY(42px)}
+  .founder:hover .bio-col{transform:translateY(calc(-50% - 20px))}
+}
+/* RYAN's source portrait faces left; slide p-07 has him facing right — mirror him in place (origin at the figure's own centre, 56% of the frame, so the portrait keeps its size and its overlap with the big name) */
+.founder.flip .photo img{transform:scaleX(-1);transform-origin:56% 50%}
+@media(max-width:900px){
+  .founder{min-height:0;display:flex;flex-direction:column}
+  .founder .bigname{position:static;order:1;font-size:clamp(52px,15vw,84px)}
+  .founder .photo{position:static;transform:none;width:min(430px,88vw);height:auto;margin:10px auto 0;order:2}
+  /* on the stacked mobile layout the portrait stands alone and centred, so the desktop mirror origin (56%, set for the name-overlap composition) would push the flipped box ~12% of its width past its own right edge and off the screen — flipping about the centre keeps the same facing direction inside the same box */
+  .founder.flip .photo img{transform-origin:50% 50%}
+  .founder .photo img{width:100%;height:auto}
+  .founder .nameblock{position:static;order:3;text-align:left;margin-top:14px}
+  .founder.flip .nameblock{text-align:left}
+  .founder .bio-col{position:static;transform:none;width:100%;order:4;margin-top:16px}
+}
+@media (prefers-reduced-motion:reduce){.founder .photo,.founder .bio-col{opacity:1;transform:none;transition:none}
+.founder .bigname,.founder .nameblock{opacity:1;transform:none;transition:none}}
+/* designer profile — this edition's personal-intro run (P2 onwards), replacing the firm pages: portrait intro, credentials & awards, the man himself, his traits. Built from the page's own units (kicker + title, grids that sit side by side in landscape and stack in portrait) so the same composition holds on desktop and phone. Copy and photos are from the designer's own vertical deck. */
+.profile-grid{display:grid;grid-template-columns:minmax(280px,430px) 1fr;gap:clamp(30px,5vw,80px);align-items:end}
+.profile-photo{margin:0}
+.profile-photo img{width:100%;height:auto;filter:drop-shadow(0 24px 38px rgba(0,0,0,.55))}
+.pname{font-size:clamp(46px,6.4vw,80px);font-weight:900;letter-spacing:.16em;line-height:1.1;margin:0}
+.prole{margin:16px 0 0;color:var(--gold);font-size:clamp(16px,1.9vw,20px);letter-spacing:.28em;font-weight:500}
+.prole .en{font-family:var(--en);letter-spacing:.14em;font-size:.82em;color:var(--gold2)}
+.pbio{margin:26px 0 0;color:var(--ink2);font-size:clamp(15.5px,1.7vw,18px);line-height:1.95;max-width:40em}
+.pbio-en{margin:16px 0 0;color:var(--ink3);font-family:var(--en);font-size:13.5px;line-height:1.75;max-width:46em}
+@media(max-width:820px){.profile-grid{grid-template-columns:1fr;align-items:start}.profile-photo{max-width:340px}}
+.cred-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);margin-top:30px}
+.cred-h{font-size:19px;letter-spacing:.34em;color:var(--gold);margin:0 0 6px;font-weight:700}
+.cred-list{list-style:none;margin:0;padding:0}
+.cred-list li{padding:13px 2px;border-bottom:1px solid rgba(201,168,106,.14)}
+.cred-list b{display:block;font-size:16.5px;font-weight:600;letter-spacing:.03em}
+.cred-list span{color:var(--ink3);font-size:14px}
+/* the deck's six evidence photos are laid out as the user's reference collage, at the reference's own measured proportions (983×336): four columns — a tall photo (the hand-held IDG trophy), a stacked pair (the lighting trophy over the awards group photo), a tall plaque, and a stacked pair of certificates (IDG over honour) — every photo cropped to fill its cell and sitting under the same grey mask, proof on file rather than the page's protagonists; the lists above carry the page. Portrait phones reflow the same collage into two stacked bands of tall-plus-pair, so no photo is ever squeezed into the wide banner's proportions. */
+.cred-photos{display:grid;grid-template-columns:1.13fr 1.08fr 1.15fr 1fr;grid-template-rows:1.15fr 1fr;gap:10px;margin-top:30px;aspect-ratio:983/336}
+.cred-photos figure{margin:0;background:var(--panel);border:1px solid rgba(201,168,106,.16);border-radius:4px;overflow:hidden;min-height:0;min-width:0}
+.cred-photos img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) brightness(.62) contrast(.96);opacity:.88}
+.cred-photos .cp-tall-l{grid-column:1;grid-row:1/3}
+.cred-photos .cp-mid-t{grid-column:2;grid-row:1}
+.cred-photos .cp-mid-b{grid-column:2;grid-row:2}
+.cred-photos .cp-mid-b img{object-position:50% 25%}
+.cred-photos .cp-tall-r{grid-column:3;grid-row:1/3}
+.cred-photos .cp-r-t{grid-column:4;grid-row:1}
+.cred-photos .cp-r-b{grid-column:4;grid-row:2}
+@media(max-width:820px){.cred-grid{grid-template-columns:1fr}
+.cred-photos{grid-template-columns:1fr 1fr;grid-template-rows:repeat(4,1fr);aspect-ratio:1/1.12}
+.cred-photos .cp-tall-l{grid-column:1;grid-row:1/3}
+.cred-photos .cp-mid-t{grid-column:2;grid-row:1}
+.cred-photos .cp-mid-b{grid-column:2;grid-row:2}
+.cred-photos .cp-tall-r{grid-column:1;grid-row:3/5}
+.cred-photos .cp-r-t{grid-column:2;grid-row:3}
+.cred-photos .cp-r-b{grid-column:2;grid-row:4}}
+.person-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2.4vw,28px);margin-top:38px}
+.person-card{background:var(--panel);border:1px solid rgba(201,168,106,.16);border-radius:4px;overflow:hidden}
+.person-card figure{margin:0;height:clamp(280px,26vw,400px);display:flex;overflow:hidden}
+/* the three photos rest under a grey mask like the credentials evidence; on hover they come back to full colour and push in — the man in colour is the reward for leaning in */
+.person-card figure img{width:100%;height:100%;object-fit:cover;filter:grayscale(1) brightness(.62) contrast(1.03);transition:filter .45s ease,transform .6s cubic-bezier(.16,1,.3,1)}
+@media(hover:hover){.person-card:hover figure img{filter:none;transform:scale(1.07)}}
+@media (prefers-reduced-motion:reduce){.person-card figure img{transition:none}.person-card:hover figure img{transform:none}}
+/* each card now carries the user's own three-photo collage as a single image, shown as supplied — centred in the frame, never re-cut or recombined */
+.person-card .pc-body{padding:20px 22px 24px}
+.person-card h3{margin:0 0 8px;font-size:20px;font-weight:700;letter-spacing:.06em;color:var(--gold2)}
+.person-card p{margin:0;color:var(--ink2);font-size:15.5px}
+@media(max-width:820px){.person-grid{grid-template-columns:1fr}.person-card figure{height:320px}}
+.trait-list li b{font-size:19px;letter-spacing:.14em;white-space:nowrap}
+.trait-list li span{color:var(--ink2);font-size:16px;line-height:1.65}
+/* traits — laid out to the user's annotated reference: the heading and the square word cloud share one row, so the image's top edge sits flush with the top of the heading text and the section is only as tall as the image itself; the heading stands at the top of the left column while the three ticked traits, grouped tightly together, are centred exactly on the image's height (never spread to its edges); a full-width hairline closes the content area. Portrait phones run heading, image, then the three traits stacked beneath. */
+.traits-head{width:100%}
+.traits-layout{display:grid;grid-template-columns:minmax(330px,1fr) 1.25fr;gap:clamp(30px,4.5vw,72px);align-items:stretch}
+.traits-left{position:relative;min-width:0}
+.traits-fig{aspect-ratio:1/1;width:100%;max-width:800px;justify-self:end;margin:0}
+.traits-fig img{width:100%;height:100%;object-fit:cover}
+.check-list.traits-side{position:absolute;top:50%;left:0;right:0;transform:translateY(-50%);display:flex;flex-direction:column;gap:34px;margin:0}
+.check-list.traits-side li{align-items:baseline}
+.check-list.traits-side li::before{align-self:flex-start}
+.traits-rule{border-top:1px solid var(--line);margin-top:clamp(38px,4.5vw,58px)}
+@media(max-width:820px){.traits-layout{grid-template-columns:1fr;gap:30px}.traits-left{display:contents}.traits-fig{order:1;width:100%;max-width:560px;justify-self:center}.check-list.traits-side{position:static;transform:none;order:2;gap:16px}}
+/* pain */
+.pain{background:linear-gradient(180deg,#120d08,#1a130b 55%,#120d08)}
+.pain h2.big{font-size:clamp(34px,5.6vw,64px);font-weight:900;line-height:1.3;margin:0 0 10px}
+.pain-list{margin-top:26px;display:grid;gap:14px}
+.pain-item{display:grid;grid-template-columns:auto 1fr auto;gap:clamp(16px,3vw,34px);align-items:center;background:rgba(255,255,255,.025);border:1px solid rgba(201,168,106,.16);padding:clamp(20px,3vw,34px);border-radius:4px}
+.no-mark{width:clamp(52px,6vw,76px);height:clamp(52px,6vw,76px);border:2px solid var(--gold);border-radius:50%;position:relative;flex:none;transform:rotate(-8deg)}
+.no-mark::before,.no-mark::after{content:"";position:absolute;left:50%;top:50%;width:62%;height:3px;background:var(--gold2);border-radius:2px}
+.no-mark::before{transform:translate(-50%,-50%) rotate(45deg)}
+.no-mark::after{transform:translate(-50%,-50%) rotate(-45deg)}
+/* the three crosses pop in one by one, shrinking from 1.8x to size with a damped settle — "look here" */
+.pain-item.in .no-mark{animation:noPop .8s cubic-bezier(.34,1.35,.64,1) both}
+.pain-list .pain-item:nth-child(2){transition-delay:.25s}
+.pain-list .pain-item:nth-child(3){transition-delay:.5s}
+.pain-list .pain-item:nth-child(2) .no-mark{animation-delay:.15s}
+.pain-list .pain-item:nth-child(3) .no-mark{animation-delay:.3s}
+@keyframes noPop{from{opacity:0;transform:rotate(-8deg) scale(1.8)}to{opacity:1;transform:rotate(-8deg) scale(1)}}
+/* attention titles: an overshoot-settle entrance that pulls the eye and raises the question before the content below */
+.rv.in .attn,.attn.rv.in{animation:attnIn 1.5s cubic-bezier(.22,1.28,.36,1) both}
+@keyframes attnIn{0%{opacity:0;transform:scale(1.06) translateY(16px)}55%{opacity:1;transform:scale(.996) translateY(0)}78%{transform:scale(1.008)}100%{opacity:1;transform:scale(1) translateY(0)}}
+@media (prefers-reduced-motion:reduce){.pain-item.in .no-mark,.rv.in .attn,.attn.rv.in{animation:none}}
+.pain-item .tag{font-family:var(--en);letter-spacing:.3em;color:var(--gold);font-size:12px;display:block;margin-bottom:6px}
+.pain-item .txt{font-size:clamp(21px,3.2vw,36px);font-weight:700;line-height:1.45}
+.pain-item .txt s{text-decoration-color:var(--red);text-decoration-thickness:3px;color:var(--ink3)}
+.pain-item .fear{color:var(--ink3);font-size:15px;text-align:right;max-width:none;margin:0}
+@media(min-width:1100px){.pain-item .fear{white-space:nowrap}}
+@media(max-width:700px){.pain-item{grid-template-columns:auto 1fr}.pain-item .fear{display:none}}
+.pain-composite{display:flex;position:relative;margin:40px 0 0;border:1px solid var(--line);border-radius:4px;overflow:hidden;height:clamp(300px,54vh,540px)}
+.pain-composite img{height:100%;object-fit:cover;min-width:0}
+.pain-composite .im1{flex:1.52 1 0}
+.pain-composite .im2{flex:1 1 0}
+.pain-composite figcaption{position:absolute;left:14px;bottom:12px;z-index:2;background:rgba(12,8,4,.78);padding:5px 12px;font-size:12.5px;letter-spacing:.14em;color:var(--gold2);border-radius:2px}
+.fear-head{display:flex;align-items:center;gap:16px;margin:66px 0 2px;font-size:clamp(21px,2.6vw,31px);font-weight:700;color:var(--ink2);letter-spacing:.04em}
+.fear-head::before{content:"";width:36px;height:2px;background:var(--red);flex:none}
+.fear-head .q{color:#e0684c}
+@media(max-width:700px){.pain-composite{height:270px}}
+/* then / now */
+.split2{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,4vw,48px);align-items:start}
+@media(max-width:820px){.split2{grid-template-columns:1fr}}
+.frame{border-radius:4px;overflow:hidden;border:1px solid var(--line)}
+.frame img{width:100%}
+.duo{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.duo img{height:100%;object-fit:cover}
+.paper-lines{margin-top:15vh}
+.paper-lines .pl1{font-size:clamp(25px,2.7vw,36px);font-weight:700;color:var(--gold2);letter-spacing:.22em;margin:0}
+.paper-lines .pl2{margin:11vh 0 0;font-size:clamp(17px,1.9vw,23px);color:var(--ink2);letter-spacing:.08em;line-height:1.95}
+.board{display:grid;grid-template-columns:repeat(12,1fr);gap:6px;background:#eae3cf;padding:clamp(8px,1.4vw,18px);border:1px solid var(--line);border-radius:4px;margin-top:36px;align-items:start}
+.board figure{margin:0;overflow:hidden;background:#eae3cf}
+.board img{width:100%;height:100%;object-fit:contain}
+.board1{margin:36px 0 0;background:#f2ede2;padding:clamp(8px,1.4vw,18px);border:1px solid var(--line);border-radius:4px}
+.board1 img{width:100%;height:auto;object-fit:contain}
+@media(max-width:820px){.board figure{grid-column:span 12!important}}
+.check-list{list-style:none;margin:26px 0 0;padding:0;display:grid;gap:12px}
+.check-list li{display:flex;gap:12px;color:var(--ink2);font-size:16px;position:relative}
+/* these three points are the method, not the problem — so the mark is a green tick in a ring, not a cross (the pain page's no-marks stay crosses: those ARE the problems) */
+.check-list li::before{content:"";flex:none;width:20px;height:20px;margin-top:5px;border:1.5px solid #4da167;border-radius:50%}
+.check-list li::after{content:"";position:absolute;left:6px;top:12px;width:9px;height:5px;border-left:2.5px solid #63c47f;border-bottom:2.5px solid #63c47f;transform:rotate(-45deg)}
+/* process timeline */
+.timeline{margin-top:44px;border-left:1px solid var(--line);display:grid;gap:0}
+.step{display:grid;grid-template-columns:110px 1fr 1.1fr;gap:clamp(16px,3vw,40px);padding:30px 0 30px 28px;position:relative;border-bottom:1px solid rgba(201,168,106,.12)}
+.step::before{content:"";position:absolute;left:-5px;top:42px;width:9px;height:9px;border-radius:50%;background:var(--bg);border:2px solid var(--gold)}
+.step .no{font-family:var(--en);font-size:30px;font-weight:600;color:var(--gold);line-height:1.2}
+.step .no small{display:block;font-size:11px;letter-spacing:.22em;color:var(--ink3);font-weight:400;margin-top:6px}
+.step h3{margin:0 0 8px;font-size:21px;font-weight:700;letter-spacing:.06em}
+.step h3 .goldline{color:var(--gold2)}
+.step p{margin:0;color:var(--ink2);font-size:15.5px}
+.step figure{margin:0;border-radius:4px;overflow:hidden;border:1px solid var(--line)}
+.step figure img{width:100%;height:230px;object-fit:cover}
+@media(max-width:820px){.step{grid-template-columns:1fr;padding-left:22px}.step figure img{height:200px}}
+/* steps 1-2 → 04: every photo enters with a large, plainly visible damped rise-and-settle (56px up from 94% scale, spring overshoot), staggered inside its strip; the layout itself is untouched (1-1 keeps its own choreography). Triggered by the steps' own observer with no pre-fire margin, so the motion plays while the step is actually on screen — and replays on re-entry */
+#how .step:not(.step11) figure:not(.phone11){opacity:0;transform:translateY(56px) scale(.94);transition:opacity .85s ease,transform 1.1s cubic-bezier(.22,1.25,.36,1)}
+#how .step.in figure:not(.phone11){opacity:1;transform:none}
+#how .step.in .strip3 figure:nth-of-type(2),#how .step.in .strip4 figure:nth-of-type(2),#how .step.in .gal figure:nth-of-type(2){transition-delay:.1s}
+#how .step.in .strip3 figure:nth-of-type(3),#how .step.in .strip4 figure:nth-of-type(3),#how .step.in .gal figure:nth-of-type(3){transition-delay:.2s}
+#how .step.in .strip4 figure:nth-of-type(4),#how .step.in .gal figure:nth-of-type(4){transition-delay:.3s}
+#how .step.in .gal figure:nth-of-type(5){transition-delay:.4s}
+#how .step.in .gal figure:nth-of-type(6){transition-delay:.5s}
+/* step 1-1's own two gallery photos get the same damped rise as every other step's photos (only the phone cutout keeps its separate choreography) */
+#how .step11 .gal-11>figure{opacity:0;transform:translateY(56px) scale(.94);transition:opacity .85s ease,transform 1.1s cubic-bezier(.22,1.25,.36,1)}
+#how .step11.in .gal-11>figure{opacity:1;transform:none}
+#how .step11.in .gal-11>figure:nth-of-type(2){transition-delay:.1s}
+@media (prefers-reduced-motion:reduce){#how .step11 .gal-11>figure{opacity:1;transform:none;transition:none}}
+@media (prefers-reduced-motion:reduce){#how .step:not(.step11) figure:not(.phone11){opacity:1;transform:none;transition:none}}
+.wechat-row{display:grid;grid-template-columns:auto 1fr;gap:22px;align-items:center;margin-top:8px}
+.wechat-row img{width:170px;border-radius:6px;border:1px solid var(--line)}
+@media(max-width:640px){.wechat-row{grid-template-columns:1fr}.wechat-row img{width:200px}}
+/* systems */
+.systems{background:var(--bg2)}
+.sysgrid{display:grid;grid-template-columns:minmax(260px,420px) 1fr;gap:clamp(24px,4vw,56px);align-items:center;margin-top:36px}
+@media(max-width:820px){.sysgrid{grid-template-columns:1fr}}
+.syslist{display:grid;gap:0}
+.syslist div{display:flex;gap:18px;padding:16px 4px;border-bottom:1px solid rgba(201,168,106,.14);align-items:baseline}
+.syslist b{font-size:18px;letter-spacing:.18em;white-space:nowrap}
+.syslist b i{font-style:normal;color:var(--gold);font-family:var(--en);margin-right:10px;font-size:13px}
+.syslist span{color:var(--ink3);font-size:14.5px}
+/* systems: the axonometric enters with a settle, then the six points rise in one after another */
+.sysgrid .frame.rv{transform:translateY(36px) scale(.96);transition:opacity 1s ease,transform 1.15s cubic-bezier(.16,1,.3,1)}
+.sysgrid .frame.rv.in{transform:none}
+.sysgrid .frame img{transform:scale(1.06);transition:transform 1.5s cubic-bezier(.16,1,.3,1)}
+.sysgrid .frame.in img{transform:scale(1)}
+.syslist div{opacity:0;transform:translateY(18px);transition:opacity .7s ease,transform .85s cubic-bezier(.16,1,.3,1)}
+.syslist.in div{opacity:1;transform:none}
+.syslist.in div:nth-child(1){transition-delay:.06s}
+.syslist.in div:nth-child(2){transition-delay:.18s}
+.syslist.in div:nth-child(3){transition-delay:.3s}
+.syslist.in div:nth-child(4){transition-delay:.42s}
+.syslist.in div:nth-child(5){transition-delay:.54s}
+.syslist.in div:nth-child(6){transition-delay:.66s}
+@media (prefers-reduced-motion:reduce){.syslist div{opacity:1;transform:none;transition:none}.sysgrid .frame img{transform:none;transition:none}}
+.quote-band{display:grid;grid-template-columns:1.1fr .9fr;min-height:420px;overflow:hidden}
+.quote-band .q{display:flex;flex-direction:column;justify-content:center;padding:clamp(28px,5vw,64px)}
+/* the golden line is the set piece, and it closes the whole intro before the cases begin: it must not start until the band itself is fully on screen (quoteCheck in the script waits for exactly that), then a short held beat, then the drop itself at a slower pace than before — type starts larger than the page, shrinks fast, then settles slowly into place; only once it has landed does the photo fade in */
+.quote-band .q.rv{opacity:1;transform:none;transition:none}
+.quote-band .q p{opacity:0;transform-origin:12% 50%}
+.quote-band .q.in p{animation:quoteDrop 2.2s cubic-bezier(.16,1,.3,1) .45s both;will-change:transform,opacity;backface-visibility:hidden}
+@keyframes quoteDrop{0%{opacity:0;transform:scale(3.6)}45%{opacity:1;transform:scale(1.03)}75%{transform:scale(1.004)}100%{opacity:1;transform:scale(1)}}
+.quote-band figure.rv{opacity:0;transform:none;transition:opacity 1.6s ease .45s}
+.quote-band figure.rv.in{opacity:1}
+@media (prefers-reduced-motion:reduce){.quote-band .q.in p{opacity:1;animation:none}.quote-band figure.rv{opacity:1;transition:none}}
+.quote-band .q p{font-size:clamp(24px,3.4vw,40px);font-weight:700;line-height:1.6;margin:0}
+.quote-band .q p em{font-style:normal;color:var(--gold2);border-bottom:2px solid var(--gold)}
+.quote-band figure{margin:0}
+.quote-band figure img{width:100%;height:100%;object-fit:cover}
+@media(max-width:820px){.quote-band{grid-template-columns:1fr}.quote-band figure img{height:300px}}
+/* cases */
+.case{padding:clamp(56px,7vw,88px) 0;border-top:1px solid var(--line);position:relative}
+.case .bgnum{position:absolute;top:2px;right:0;font-family:var(--en);font-size:clamp(84px,10vw,158px);font-weight:700;color:transparent;-webkit-text-stroke:1px rgba(201,168,106,.14);line-height:1;pointer-events:none;z-index:0}
+.case-head{position:relative;z-index:1}
+.case-head.flip{flex-direction:row-reverse}
+.case-head.flip .desc{text-align:right}
+.case-head{display:flex;justify-content:space-between;align-items:flex-end;gap:20px;flex-wrap:wrap;margin-bottom:26px}
+.case-head .idx{font-family:var(--en);color:var(--gold);letter-spacing:.3em;font-size:12px}
+.case-head h3{font-size:clamp(26px,3.6vw,42px);margin:6px 0 4px;font-weight:900;letter-spacing:.05em}
+.case-head h3.serif{font-family:var(--serif)}
+.case-head .meta{color:var(--ink3);font-size:14px;letter-spacing:.14em}
+.case-head .desc{color:var(--ink2);max-width:34em;font-size:15.5px;margin:0}
+/* every case intro is set on one line at the user's word — the shared 34em cap kept stranding a few glyphs alone on a second line (Pangu's "的一案。", Tanzania's "痕跡。", Nantong's tail). All ten intros: no wrap, no width cap, and the size eases down with the viewport by a per-case divisor (--dn = the intro's glyph count + 1.5, set by the builder) so the whole line always fits at any width, phone included; wording untouched */
+.case-head .desc.one{white-space:nowrap;max-width:none;font-size:min(15.5px,calc((100vw - 56px)/var(--dn,39.5)))}
+/* cases section title: 他的 rides at the case-name size (the case h3 clamp) in yellow-gold, and 私宅作品 itself grows to 1.8x the section-title size, same face and colour as before */
+.casestitle{display:flex;align-items:baseline;gap:.38em;flex-wrap:wrap}
+.casestitle .ta{font-size:clamp(26px,3.6vw,42px);color:var(--gold2)}
+/* designer edition: the cases title reads 他的 (not the firm edition's TA們的) — 他 and 的 both live in Noto Sans TC at the same 900 weight, so the line renders in literally the one font, no borrowed glyph, no span, no transform. Page copy is traditional throughout, and every firm-plural 他們/TA们 in the body copy has been changed to the singular 他 for this edition. */
+.casestitle .big{font-size:clamp(54px,8.28vw,97px)}
+/* Nantong's opening frame is a click-to-play video in the removed first photo's slot: its poster is the video's own first frame (the same street view the photo showed), an explicit gold play button sits centred on it, and the native controls take over once it plays — no autoplay */
+.cg figure.ntvid{position:relative;background:#000}
+.cg figure.ntvid video{width:100%;height:100%;object-fit:cover;display:block}
+.ntplay{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);width:86px;height:86px;border-radius:50%;border:1.5px solid rgba(230,205,147,.95);background:rgba(14,10,5,.5);cursor:pointer;display:flex;align-items:center;justify-content:center;z-index:2;transition:opacity .3s ease,transform .3s ease;padding:0;min-height:0}
+.ntplay span{width:0;height:0;border-left:27px solid var(--gold2);border-top:17px solid transparent;border-bottom:17px solid transparent;margin-left:8px}
+.ntplay:hover{transform:translate(-50%,-50%) scale(1.07)}
+.ntplay.off{opacity:0;pointer-events:none}
+@media(max-width:640px){.ntplay{width:68px;height:68px}.ntplay span{border-left-width:21px;border-top-width:13px;border-bottom-width:13px;margin-left:6px}}
+.cg{display:grid;grid-template-columns:repeat(12,1fr);gap:10px;grid-auto-flow:dense;align-items:start}
+.cg figure{margin:0;border-radius:4px;overflow:hidden;border:1px solid rgba(201,168,106,.14);background:#0f0b07}
+.cg img{width:100%;height:100%;object-fit:cover}
+.cg figure.hero{max-height:76vh}
+.cg figure.alpha{background:radial-gradient(110% 120% at 50% 0%,#2a2013 0%,#14100a 70%);display:flex;align-items:center;justify-content:center}
+.cg figure.alpha img{object-fit:contain}
+/* Jiuzhang — layout untouched; its figures alone get an entrance: each rises 54px with a slight settle-scale and a spring ease, staggered three to a row by the per-figure observer below (jzIO), replaying on return */
+.jzcase .cg figure{opacity:0;transform:translateY(54px) scale(.965);transition:opacity .75s ease,transform 1.15s cubic-bezier(.19,1.22,.3,1)}
+.jzcase .cg figure.jin{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.jzcase .cg figure{opacity:1;transform:none;transition:none}}
+/* every other case figure — all cases except Jiuzhang's own choreography, Tanzania's bespoke pair and Pangu's unit figures — gets the same treatment at normal amplitude: a damped rise as the figure itself arrives, driven per-figure by cfIO below, resetting off-screen so it replays on return */
+.case .cg figure.cfv{opacity:0;transform:translateY(42px) scale(.97);transition:opacity .8s ease,transform 1.05s cubic-bezier(.19,1.22,.3,1)}
+.case .cg figure.cfv.cin{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){.case .cg figure.cfv{opacity:1;transform:none;transition:none}}
+/* Nantong closing row — wall detail plus the two Douyin captures in one row aligned with the row above; the captures are content, so they sit contained and whole (no count is ever cropped), the wall photo covers */
+.cg figure.ntv{margin:0}
+.cg figure.dyv img{object-fit:contain}
+/* Tanzania — two bespoke figures, rebuilt from the re-sent originals. Both figures are driven by their own late observer (tzIO below: .play is added only once half the figure is on screen, and removed when it has essentially left, so both entrances replay on return — the old .case.in trigger fired while the figures were still below the fold and the motion was over before the reader arrived). (1) Pool figure: the original axonometric drawing on its faded light ground; the slide's circular pool detail (its fire point measured at 69.05% / 50.77% of the detail) is pinned to the drawing's fire-bowl (40.20% / 71.94%) while it grows — from 5% to ~62% over the first third of the path — then it glides up-left across the drawing and settles at full size (Ø31% of frame width) in the empty upper-left of the sheet, so the eye is led from the fire-bowl detail across the whole drawing to its resting corner. The whole journey is ONE continuous motion: position and scale are dense samples of a single smooth curve played back with linear timing (no per-segment easings to jar against each other), and on the way in the circle swells gently past its final size — peaking at ~1.11x around three-quarters of the glide — then relaxes back to exactly 1x with a soft damped tail, never bouncing. No ring, no connector lines, only a soft shadow. (2) Sketch figure: the two re-sent originals side by side at one shared height — left, the corridor perspective panel cropped from the 4399px original (faded photo ground, headline and framed sketch complete); right, the bedroom-suite axonometric, a transparent PNG flattened on the same faded light ground (#e9e5de), never black. The right image never moves position: centred on its own slot, it starts at 2.6x — a sheet bigger than its frame, spilling over its neighbours — and shrinks straight down into its slot. */
+.cg figure.tz{position:relative}
+.cg figure.tz1{background:#e9e5de}
+.cg figure.tz2{background:#e9e5de}
+.tz-base{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.tz-mag{position:absolute;left:2%;top:2.5%;width:31%;aspect-ratio:1;transform-origin:69.05% 50.77%;transform:translate(54%,134%) scale(.05);opacity:0;pointer-events:none;will-change:transform,opacity}
+.tz1.play .tz-mag{animation:tzMagPath 2.1s linear .25s both}
+@keyframes tzMagPath{
+0%{transform:translate(54%,134%) scale(.05);opacity:0}
+2.5%{transform:translate(54%,134%) scale(.055);opacity:.42}
+5%{transform:translate(54%,134%) scale(.06);opacity:.83}
+7.5%{transform:translate(54%,134%) scale(.072);opacity:1}
+10%{transform:translate(54%,134%) scale(.092)}
+12.5%{transform:translate(54%,134%) scale(.119)}
+15%{transform:translate(54%,134%) scale(.154)}
+17.5%{transform:translate(54%,134%) scale(.197)}
+20%{transform:translate(54%,134%) scale(.251)}
+22.5%{transform:translate(54%,134%) scale(.308)}
+25%{transform:translate(54%,134%) scale(.368)}
+27.5%{transform:translate(54%,134%) scale(.437)}
+30%{transform:translate(54%,134%) scale(.5)}
+32.5%{transform:translate(54%,134%) scale(.562)}
+35%{transform:translate(54%,134%) scale(.62)}
+37.5%{transform:translate(53.6%,133%) scale(.657)}
+40%{transform:translate(53.02%,131.58%) scale(.695)}
+42.5%{transform:translate(52.21%,129.55%) scale(.733)}
+45%{transform:translate(51.08%,126.77%) scale(.77)}
+47.5%{transform:translate(49.69%,123.3%) scale(.807)}
+50%{transform:translate(48.02%,119.16%) scale(.843)}
+52.5%{transform:translate(46.06%,114.29%) scale(.878)}
+55%{transform:translate(43.73%,108.53%) scale(.912)}
+57.5%{transform:translate(41.04%,101.84%) scale(.945)}
+60%{transform:translate(38.18%,94.74%) scale(.977)}
+62.5%{transform:translate(35.28%,87.55%) scale(1.006)}
+65%{transform:translate(32.03%,79.48%) scale(1.036)}
+67.5%{transform:translate(28.75%,71.35%) scale(1.064)}
+70%{transform:translate(25.65%,63.65%) scale(1.085)}
+72.5%{transform:translate(22.38%,55.53%) scale(1.102)}
+75%{transform:translate(19.31%,47.93%) scale(1.112)}
+77.5%{transform:translate(16.45%,40.83%) scale(1.115)}
+80%{transform:translate(13.8%,34.25%) scale(1.107)}
+82.5%{transform:translate(11.36%,28.18%) scale(1.094)}
+85%{transform:translate(8.97%,22.25%) scale(1.078)}
+87.5%{transform:translate(6.59%,16.34%) scale(1.057)}
+90%{transform:translate(4.59%,11.39%) scale(1.038)}
+92.5%{transform:translate(2.84%,7.05%) scale(1.023)}
+95%{transform:translate(1.62%,4.02%) scale(1.012)}
+97.5%{transform:translate(.57%,1.4%) scale(1.003);opacity:1}
+100%{transform:translate(0,0) scale(1);opacity:1}
+}
+.tz-mag img{width:100%;height:100%;display:block;filter:drop-shadow(0 12px 26px rgba(35,30,18,.3))}
+.tz2-row{display:flex;height:100%}
+.tz2-left{flex:0 0 33.9%;overflow:hidden}
+.tz2-right{flex:1 1 auto;position:relative;z-index:2}
+.tz2-left img,.tz2-right img{width:100%;height:100%;object-fit:cover;display:block}
+.tz2-right img{transform:scale(2.6);transition:transform 2.2s cubic-bezier(.25,.7,.2,1) .15s;will-change:transform}
+.tz2.play .tz2-right img{transform:scale(1)}
+@media(max-width:820px){.cg figure.tz{grid-column:span 12!important}}
+@media (prefers-reduced-motion:reduce){.tz-mag{transform:none;opacity:1;animation:none}.tz2-right img{transform:none;transition:none}}
+@media(max-width:820px){.cg figure{grid-column:span 6!important}.cg figure.hero{grid-column:span 12!important}.cg figure.pairf{grid-column:span 12!important}.cg figure.zj43,.cg figure.tygrp,.cg figure.dyfig,.cg figure.zjcraft,.cg figure.pgfig{grid-column:span 12!important}}
+/* step galleries + drawing collage */
+.step.wide{grid-template-columns:110px 1fr}
+.strip3,.strip4{display:grid;gap:10px;grid-column:2/-1}
+.strip3{grid-template-columns:repeat(3,1fr)}
+/* 1-2: the two left photos sit a touch smaller than before; the right photo takes the freed width, heights follow from the fixed aspect ratios */
+.strip3.s12{grid-template-columns:.86fr .86fr 1.28fr}
+.strip3.s21{grid-template-columns:1.565fr .7fr .5fr;grid-template-rows:1fr;aspect-ratio:2.765}
+.strip3.s21 figure{align-self:stretch;min-width:0;min-height:0}
+.strip3.s21 figure:nth-child(2) img{object-position:50% 20%}
+.strip3.s21 figure:nth-child(3) img{object-position:72% 50%}
+.strip4{grid-template-columns:repeat(4,1fr)}
+.strip3 figure,.strip4 figure{margin:0;border-radius:4px;overflow:hidden;border:1px solid var(--line);background:#0f0b07}
+.strip3 figure{aspect-ratio:auto;align-self:start}
+.strip4 figure{aspect-ratio:4/3.1}
+.step .strip3 img,.step .strip4 img{width:100%;height:100%;object-fit:cover}
+/* user-composited single images (2-2, 2-3, 04): the whole composite at full content width, shown complete at its native aspect — never cropped, split or reordered */
+.step figure.stripfull{grid-column:2/-1}
+.step figure.stripfull img{width:100%;height:auto;display:block;object-fit:contain}
+@media(max-width:820px){.step figure.stripfull{grid-column:1/-1}}
+@media(max-width:820px){.step.wide{grid-template-columns:1fr}.strip3,.strip4{grid-column:1/-1}.strip4{grid-template-columns:repeat(2,1fr)}.strip3 figure{aspect-ratio:4/3}}
+@media(max-width:820px){.strip3.s21{grid-template-columns:.7fr .5fr;grid-template-rows:none;aspect-ratio:auto}.strip3.s21 figure:first-child{grid-column:1/-1;aspect-ratio:1.565}.strip3.s21 figure:nth-child(2){aspect-ratio:.7}.strip3.s21 figure:nth-child(3){aspect-ratio:.5}}
+/* 1-1: the hand in the cutout reaches in from the lower left, so the phone lives at the step's lower-left corner; the text runs across the top and the two photos (the designer looking up, and the clearer needs-form capture) sit side by side directly beneath it, scaled down to seventy percent of the column width per the user's annotated reference — anchored at their top-left so the top edge holds and the bottom edge rises — and the phone, at its unchanged size, rides up with them so its bottom edge lands exactly on the photos' bottom edge (the step's 46px bottom padding is precisely the gap between the gallery's bottom and the step's own bottom edge) */
+.step.step11{grid-template-columns:110px 1fr;min-height:472px;padding-bottom:46px}
+.step11 .step11-text{position:relative;z-index:1;grid-column:2;grid-row:1}
+.step.step11 .gal-11{grid-column:2;grid-row:2;width:70%;justify-self:start;grid-template-columns:1fr 1.02592fr}
+.gal-11{grid-template-columns:1fr 1fr;align-items:start}
+/* both captures stand at their own native aspect (the designer looking up 864×810, the needs form 789×721): each figure wraps its image exactly — no cover crop on any side. The form column runs wider by the two aspects' own ratio (0.9375 ÷ 0.9138 ≈ 1.02592), which enlarges the form capture just enough that its height lands exactly on the looking-up photo's height, so the two bottom edges share one line. The selector is deliberately .step.step11 .gal-11: the generic .step .gal rule further down sets 1fr 1fr at equal specificity to a plain .step11 .gal-11 and, coming later, silently overrode this ratio for a whole round (measured in-browser: equal 398px columns, form bottom 10px short at 1440px wide); the strengthened selector is what makes the ratio real — verified in-browser after the fix, both bottoms on one line */
+.gal-11>figure{height:auto}
+.step11 .gal-11>figure img{width:100%;height:auto;display:block}
+.step11 .phone11{position:absolute;left:-1px;bottom:45px;height:378px;width:auto;z-index:6;margin:0;background:transparent;border:none;border-radius:0;overflow:visible;opacity:0;transform:translate(-64px,54px) rotate(7deg) scale(.86);transform-origin:16% 94%;transition:transform .45s cubic-bezier(.2,.7,.2,1)}
+.step11 .phone11.phone-in{animation:phoneInL .9s cubic-bezier(.22,.61,.21,1) both}
+@keyframes phoneInL{from{opacity:0;transform:translate(-64px,54px) rotate(7deg) scale(.86)}to{opacity:1;transform:translate(0,0) rotate(0deg) scale(1)}}
+.step11 .phone11.settled{animation:none;opacity:1;transform:none}
+.step11 .phone11.settled:hover{z-index:8;transform:scale(1.2)}
+.step11 .phone11.phone-in img{animation:phoneFloat 4s ease-in-out .95s infinite}
+@keyframes phoneFloat{0%,100%{transform:translateY(0);filter:drop-shadow(0 14px 22px rgba(0,0,0,.5))}50%{transform:translateY(-10px);filter:drop-shadow(0 26px 32px rgba(0,0,0,.36))}}
+.step11 .phone11 img{height:100%;width:auto;object-fit:contain;filter:drop-shadow(0 14px 22px rgba(0,0,0,.5))}
+@media(max-width:1150px) and (min-width:821px){.step.step11{min-height:436px}.step11 .phone11{height:336px;left:-1px}}
+@media(max-width:820px){
+  .step.step11{grid-template-columns:1fr;min-height:0;padding-bottom:248px}
+  .step11 .step11-text{grid-column:1;grid-row:auto}
+  .step.step11 .gal-11{grid-column:1;grid-row:auto;width:100%;grid-template-columns:1fr}
+  /* stacked on phones, each at its native aspect, so the form capture stays legible instead of shrinking into a side-by-side cell */
+  .gal-11{grid-template-columns:1fr;height:auto}
+  .gal-11>figure{height:auto;aspect-ratio:864/810}
+  .gal-11>figure.form11{aspect-ratio:789/721}
+  .step11 .phone11{left:-1px;bottom:-1px;height:272px}
+}
+@media (prefers-reduced-motion:reduce){.step11 .phone11{opacity:1;transform:none;animation:none;transition:none}.step11 .phone11.phone-in img{animation:none}}
+.step .gal{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.step .gal.gal3{grid-template-columns:repeat(3,1fr)}
+.step .gal figure{border:none}
+.step .gal img{width:100%;height:100%;object-fit:cover}
+.step .gal figure.alpha{background:radial-gradient(110% 120% at 50% 0%,#2a2013,#14100a 75%);display:flex;align-items:center;justify-content:center}
+.step .gal figure.alpha img{object-fit:contain}
+.collage{display:grid;grid-template-columns:repeat(12,1fr);gap:10px;grid-auto-flow:dense;align-items:start;margin-top:34px}
+.collage figure{margin:0;border-radius:4px;overflow:hidden;border:1px solid rgba(201,168,106,.16);background:#171208}
+.collage img{width:100%;height:100%;object-fit:cover}
+.collage figure.sheet{background:#efe7d3}
+.collage figure.sheet img{object-fit:contain}
+@media(max-width:820px){.collage figure{grid-column:span 6!important}.collage figure.big{grid-column:span 12!important}}
+.dim-media{display:grid;gap:10px;container-type:inline-size}
+.dim-media .mainimg{width:100%;border-radius:3px;max-height:440px;object-fit:contain;background:#0f0b07}
+.dim-media .subs{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.dim-media .subs img{width:100%;height:190px;object-fit:contain;background:#0f0b07;border-radius:3px}
+/* the wisdom tab's white card: width unchanged, height set to the landscape tab's picture stack — its main image renders min(73.4694% of the column, 440px) tall (s48-3 is 637x468), plus the 10px gap and the 190px sub image; cqi tracks the .dim-media column at any viewport */
+.dim-media .layerbox{position:relative;border-radius:3px;background:#fff;overflow:hidden;height:640px;height:calc(min(73.4694cqi,440px) + 200px)}
+.dim-media .layerbox img{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);object-fit:contain;max-height:none}
+/* the compass disc is sized off the card height with a 16px inset top and bottom, so it never spills past the white card; max-width keeps it whole on narrow screens too */
+.dim-media .layerbox .base{width:auto;height:calc(100% - 32px);max-width:calc(100% - 32px);animation:layIn 1s ease both}
+/* plan and nine-grid share one centred extent: the square inscribed in the compass's inner circle — the character ring's inner edge measures 660 of the disc's 890px width, so the square's side is .70 x .7416 ≈ .519 of the disc's rendered width; the disc renders at the card height less 32px, or at the card width less 32px when that binds on narrow screens (the two min() terms track both cases) — the ring band stays fully visible all round */
+.dim-media .layerbox .mid{width:min(calc((min(73.4694cqi,440px) + 168px) * .518),calc((100cqi - 32px) * .519));animation:layIn .9s ease .35s both}
+/* top layer is the new 9x9 nine-grid over the plan at 70% opacity — colours solid, the plan still showing through; its entrance keyframes land on .7, not 1 */
+.dim-media .layerbox .over{width:min(calc((min(73.4694cqi,440px) + 168px) * .518),calc((100cqi - 32px) * .519));opacity:.7;animation:layInTop .9s ease .7s both}
+@keyframes layIn{from{opacity:0;transform:translate(-50%,-45%) scale(.95)}to{opacity:1;transform:translate(-50%,-50%) scale(1)}}
+@keyframes layInTop{from{opacity:0;transform:translate(-50%,-45%) scale(.95)}to{opacity:.7;transform:translate(-50%,-50%) scale(1)}}
+@media (prefers-reduced-motion:reduce){.dim-media .layerbox img{animation:none}}
+.orig-strip{margin-top:26px;border:1px solid var(--line);border-radius:4px;background:radial-gradient(120% 140% at 50% 0%,#241a0f,#0d0a06 65%);padding:clamp(10px,2vw,22px)}
+.orig-strip img{width:100%;object-fit:contain}
+.orig-strip figcaption{color:var(--ink3);font-size:12px;letter-spacing:.18em;margin-top:10px;text-align:right}
+.case video{width:100%;border-radius:4px;border:1px solid var(--line);margin-top:12px;background:#000}
+/* case videos (Tianyue, Bihai) rest behind the same warm-gold play button as the Nantong clip: poster frame plus the centred gold ring, native controls only while playing */
+.casevid{position:relative;margin-top:12px}
+.casevid video{display:block;margin-top:0}
+.video-note{color:var(--ink3);font-size:13px;letter-spacing:.16em;margin-top:8px}
+/* dimensions */
+.dim-tabs{display:flex;flex-wrap:wrap;gap:8px;margin-top:34px}
+.dim-tabs button{background:var(--panel);border:1px solid var(--line);color:var(--ink2);font-family:var(--sans);font-size:15px;letter-spacing:.1em;padding:10px 18px;border-radius:999px;cursor:pointer;min-height:44px}
+.dim-tabs button.on{background:var(--gold);color:#171208;border-color:var(--gold);font-weight:500}
+.dim-view{margin-top:18px;display:grid;grid-template-columns:1.2fr .8fr;gap:22px;align-items:center;background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:clamp(18px,3vw,32px)}
+.dim-view img{width:100%;border-radius:3px;max-height:440px;object-fit:contain;background:#0f0b07}
+.dim-view h3{margin:0 0 10px;font-size:23px;letter-spacing:.08em}
+.dim-view p{color:var(--ink2);margin:0;font-size:16px}
+@media(max-width:820px){.dim-view{grid-template-columns:1fr}}
+#dims{background:#f4eee1;color:#241b10}
+#dims .kicker{color:#9a7f4e}
+#dims h2.title{color:#241b10}
+#dims h2.title .gold{color:#a07d3c}
+#dims .lede{color:#5d5240}
+#dims .dim-tabs button{background:#fff;border-color:#ddd0b4;color:#4c4231}
+#dims .dim-tabs button.on{background:var(--gold);color:#171208;border-color:var(--gold);font-weight:500}
+#dims .dim-view{background:#fff;border-color:#e2d7bd}
+#dims .dim-view p{color:#5d5240}
+/* every one of the five dimension views enters with the same motion language as the wisdom tab's layers: media rises and settles with damping, the sub image follows, then the words (setDim rebuilds the view, so the entrance replays on every tab switch) */
+#dims .dim-view .dim-media .mainimg{animation:dimIn .95s cubic-bezier(.16,1,.3,1) both}
+#dims .dim-view .dim-media .subs img{animation:dimIn .95s cubic-bezier(.16,1,.3,1) .18s both}
+#dims .dim-view>div:last-child h3{animation:dimTxt .85s cubic-bezier(.16,1,.3,1) .12s both}
+#dims .dim-view>div:last-child p{animation:dimTxt .85s cubic-bezier(.16,1,.3,1) .26s both}
+@keyframes dimIn{from{opacity:0;transform:translateY(28px) scale(.96)}to{opacity:1;transform:translateY(0) scale(1)}}
+@keyframes dimTxt{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:none}}
+@media (prefers-reduced-motion:reduce){#dims .dim-view .dim-media .mainimg,#dims .dim-view .dim-media .subs img,#dims .dim-view>div:last-child h3,#dims .dim-view>div:last-child p{animation:none}}
+/* the floor-plan tab's hand-drawn plan is dense with fine linework and room labels, so that one view runs larger: a wider media column and a taller cap keep the annotations legible; the other four tabs keep the standard view */
+#dims .dim-view.plan-big{grid-template-columns:11fr 9fr;grid-template-rows:minmax(0,1fr);align-items:stretch;height:min(82vh,780px)}
+#dims .dim-view.plan-big .dim-media{display:block;position:relative;min-height:0;overflow:hidden}#dims .dim-view.plan-big .dim-media .mainimg{position:absolute;inset:0;width:100%;height:100%;max-height:none;object-fit:contain}#dims .dim-view.plan-big>div:last-child{align-self:center}
+@media(max-width:820px){#dims .dim-view.plan-big{grid-template-columns:1fr;height:auto}#dims .dim-view.plan-big .dim-media{position:static;overflow:visible}#dims .dim-view.plan-big .dim-media .mainimg{position:static;max-height:none;height:auto}}
+/* landscape tab, re-laid to the original slide (p-48 measured): the two sketches sit side by side on one shared baseline inside the card — the small landscape-wall elevation at bottom-left (x 48–61% of the slide, base at 92% of slide height), the big perspective to its right (x 62–98%, same base), the small one's height ≈ 0.44 of the big one's. No stacking, nothing crosses the card's bottom edge */
+#dims .dim-media .pairbox{display:flex;align-items:flex-end;gap:14px}
+#dims .dim-media .pairbox .pw{flex:0 0 26.5%;width:26.5%;height:auto;object-fit:contain;background:transparent}
+#dims .dim-media .pairbox .pm{flex:1 1 0;min-width:0;width:100%;height:auto;max-height:440px;object-fit:contain;background:transparent}
+#dims .dim-view .dim-media .pairbox img{animation:dimIn .95s cubic-bezier(.16,1,.3,1) both}
+#dims .dim-view .dim-media .pairbox img.pm{animation-delay:.15s}
+@media (prefers-reduced-motion:reduce){#dims .dim-view .dim-media .pairbox img{animation:none}}
+#dims .dim-media .mainimg,#dims .dim-media .subs img,#dims .dim-media .layerbox img{background:transparent}
+.sysband{margin-top:42px;height:190px;border-radius:4px;background:url(assets/s18-1.jpg) center 62%/cover;opacity:.45;-webkit-mask-image:linear-gradient(180deg,transparent,#000 32%,#000 78%,transparent);mask-image:linear-gradient(180deg,transparent,#000 32%,#000 78%,transparent)}
+/* flows */
+.flowpct{display:flex;gap:8px;margin-top:38px;flex-wrap:wrap}
+/* service-flow layout: the six percentage chips move from the top row to a vertical rail on the left — each chip keeps the width it had in the row (a sixth of the content width), its height stretches with the page, and the big frame keeps its original height (the old full-width 7:4 height, recomputed from the content width) while its width gives up exactly the rail plus the gap. The zoom math in applyFlow reads clientWidth/clientHeight, so it follows untouched. On narrow screens the rail folds back above the frame. */
+.flow-layout{display:flex;gap:16px;align-items:stretch;margin-top:38px}
+.flow-layout .flowpct{flex-direction:column;flex-wrap:nowrap;flex:0 0 262px;width:262px;margin-top:0}
+.flow-layout .flowpct button{flex:1 1 0}
+.flow-layout .flow-frame{flex:1 1 auto;min-width:0;margin-top:0;aspect-ratio:auto;height:calc((min(1720px,100vw) - 2*clamp(18px,4vw,56px)) * 4 / 7)}
+@media(max-width:820px){.flow-layout{flex-direction:column}.flow-layout .flowpct{flex-direction:row;flex-wrap:wrap;flex:none;width:auto}.flow-layout .flowpct button{flex:1 1 130px}.flow-layout .flow-frame{height:auto;aspect-ratio:7/4;width:100%}}
+.flowpct button{flex:1 1 130px;background:var(--panel);border:1px solid var(--line);color:var(--ink2);border-radius:4px;padding:12px 10px;cursor:pointer;font-family:var(--sans);position:relative;min-height:66px;transition:transform .72s cubic-bezier(.16,1,.3,1),opacity .72s cubic-bezier(.16,1,.3,1),border-color .3s,background .3s}
+.flowpct button b{font-family:var(--en);font-size:25px;color:var(--gold2);display:block;line-height:1.1}
+.flowpct button span{font-size:12px;letter-spacing:.05em;display:block;margin-top:5px;line-height:1.5}
+.flowpct.has-on button{opacity:.55}
+.flowpct.has-on button.on{opacity:1;transform:scale(1.25);border-color:var(--gold);background:var(--panel2);color:var(--gold2);z-index:3;box-shadow:0 16px 38px rgba(0,0,0,.5)}
+.flowpct.has-on button.on b{color:var(--gold)}
+.flow-frame{position:relative;margin-top:16px;border:1px solid var(--line);border-radius:4px;overflow:hidden;background:radial-gradient(120% 140% at 50% 0%,#241a0f,#0d0a06 65%);aspect-ratio:7/4}
+/* the strip is the 2x artwork cut into per-stage slices (15 pieces, grouped by data-s) that tile the full 4504x1234 frame with no gaps and no lost pixels — in the overview they read as the single original image; the stage boundaries whose labels/branches interleave across the spine step sideways inside empty bands of the artwork, so every stage's payment label and branch lines fall wholly inside its own slices. The last boundary is grouped by payment node, not by single node: the 5%-at-hidden-works group (data-s=4) covers both the construction-start stage and the hidden-works node with all their branches, and the 5%-at-completion group (data-s=5) covers both the mid-construction node and the completion-acceptance node — their shared boundary steps through the empty bands above the spine (x 3291–4168), between the two node pills on the spine, and below the spine (x 3566–3872) */
+.flow-strip{position:absolute;left:0;top:50%;width:100%;aspect-ratio:4504/1234;transform:translateY(-50%);transform-origin:0 0;transition:transform .72s cubic-bezier(.16,1,.3,1);will-change:transform}
+.flow-strip img{position:absolute;height:auto;transition:opacity .55s ease,filter .55s ease}
+.flow-strip.focus img{opacity:.35;filter:grayscale(.55) brightness(.72)}
+.flow-strip.focus img.on{opacity:1;filter:none}
+@media (prefers-reduced-motion:reduce){.flow-strip,.flow-strip img,.flowpct button{transition:none}}
+.flow-hint{color:var(--ink3);font-size:12.5px;letter-spacing:.18em;margin-top:10px;text-align:right}
+.dflow{display:grid;grid-template-columns:repeat(7,minmax(0,1fr));gap:12px;margin-top:36px}
+.dflow article{min-width:0}
+.dflow article b,.dflow article h3,.dflow article li{overflow-wrap:anywhere}
+/* the seven stage boxes stay on one row at every width — no wrap fallback; narrower widths are absorbed by tighter gaps, padding and type instead */
+@media(max-width:1280px){.dflow{gap:8px}.dflow article{padding:16px 14px}.dflow article b{font-size:11.5px;letter-spacing:.16em}.dflow article h3{font-size:15.5px}.dflow article ul{font-size:12.5px;padding-left:15px}.dflow article.open ul{font-size:13.5px}}
+@media(max-width:820px){.dflow{gap:6px}.dflow article{padding:12px 9px}.dflow article b{font-size:10px;letter-spacing:.1em}.dflow article h3{font-size:13px;margin:6px 0 9px}.dflow article ul{font-size:11px;padding-left:13px;gap:4px}.dflow article.open ul{font-size:11.5px}}
+@media(max-width:560px){.dflow{gap:4px}.dflow article{padding:9px 6px}.dflow article b{font-size:8.5px;letter-spacing:.05em}.dflow article h3{font-size:11.5px}.dflow article ul{font-size:9.5px;padding-left:11px;gap:3px}.dflow article.open ul{font-size:10px}}
+/* phones only: seven ~47px columns fit the screen but squeeze every line down to a character or two — the same seven stage cards therefore reflow to two per row (the last spans the row), same content, same tap-to-open; every wider screen keeps the seven-across strip exactly as designed */
+@media(max-width:640px){.dflow{grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}.dflow article{padding:14px 12px}.dflow article b{font-size:10px;letter-spacing:.14em}.dflow article h3{font-size:14.5px;margin:7px 0 10px}.dflow article ul{font-size:11.5px;padding-left:16px;gap:5px}.dflow article.open ul{font-size:12.5px}.dflow article:last-child{grid-column:1/-1}}
+.dflow article{background:var(--panel);border:1px solid var(--line);border-radius:4px;padding:22px;cursor:pointer;transition:transform .35s ease,border-color .3s,background .3s}
+.dflow article:hover{border-color:var(--gold-dim)}
+.dflow article.open{border-color:var(--gold);background:var(--panel2);transform:scale(1.08);box-shadow:0 18px 44px rgba(0,0,0,.45);position:relative;z-index:2}
+.dflow article.open ul{color:var(--ink);font-size:15px}
+.dflow article b{font-family:var(--en);color:var(--gold);font-size:13px;letter-spacing:.24em}
+.dflow article h3{margin:8px 0 12px;font-size:18px;letter-spacing:.06em}
+.dflow article ul{margin:0;padding-left:18px;color:var(--ink2);font-size:14px;display:grid;gap:5px}
+/* calculator */
+.calc{background:linear-gradient(180deg,#1d150c,#14100a)}
+.calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(24px,4vw,56px);margin-top:40px;align-items:start}
+@media(max-width:900px){.calc-grid{grid-template-columns:1fr}}
+.field{margin-bottom:26px}
+.field>label,.field>.lab{display:block;font-size:13px;letter-spacing:.26em;color:var(--gold);margin-bottom:12px;font-weight:500}
+.seg{display:flex;flex-wrap:wrap;gap:8px}
+.seg button{background:var(--panel);border:1px solid var(--line);color:var(--ink2);padding:12px 16px;font-family:var(--sans);font-size:15px;border-radius:3px;cursor:pointer;text-align:left;min-height:48px}
+.seg button small{display:block;color:var(--ink3);font-size:12px;margin-top:3px;letter-spacing:.02em}
+.seg button.on{border-color:var(--gold);color:var(--gold2);background:var(--panel2)}
+.seg button.on small{color:var(--ink2)}
+#svcseg{flex-direction:column}
+#svcseg button{width:100%}
+.field.locked>.lab{color:var(--ink3)}
+.field.locked .seg button{opacity:.35;filter:grayscale(.8);pointer-events:none}
+.area-row{display:flex;align-items:center;gap:12px}
+.area-row input{flex:1;background:var(--panel);border:1px solid var(--line);color:var(--ink);font-size:22px;font-family:var(--en);padding:12px 16px;border-radius:3px;min-height:56px;width:100%}
+.area-row input:focus{outline:2px solid var(--gold-dim)}
+.area-row .unit{font-size:16px;color:var(--ink3)}
+input[type=range]{width:100%;accent-color:var(--gold);min-height:36px;-webkit-appearance:none;appearance:none;background:transparent;cursor:pointer}
+/* the area slider's thumb is a lit gold sphere: a touch larger than the native knob, with a specular highlight high on its upper left, a warm rim, and a soft halo of light around it that breathes slowly so the eye finds it; while it is dragged or hovered the halo brightens and the ball swells a fraction. The track stays the same thin gold line as before. */
+input[type=range]::-webkit-slider-runnable-track{height:4px;border-radius:2px;background:linear-gradient(90deg,var(--gold-dim),var(--gold))}
+input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;appearance:none;width:26px;height:26px;margin-top:-11px;border-radius:50%;border:none;background:radial-gradient(circle at 32% 28%,#fffbe9 0%,#f6e2a0 26%,#dec07c 48%,var(--gold) 68%,#8a6d2f 100%);box-shadow:0 0 0 5px rgba(201,168,106,.16),0 0 20px 7px rgba(230,205,147,.42),0 5px 12px rgba(0,0,0,.55),inset 0 -4px 7px rgba(96,70,18,.5),inset 0 3px 4px rgba(255,255,255,.65);cursor:grab;transition:transform .25s ease,box-shadow .25s ease;animation:thumbGlow 2.8s ease-in-out infinite alternate}
+input[type=range]::-moz-range-track{height:4px;border-radius:2px;background:var(--gold-dim)}
+input[type=range]::-moz-range-progress{height:4px;border-radius:2px;background:var(--gold)}
+input[type=range]::-moz-range-thumb{width:24px;height:24px;border-radius:50%;border:none;background:radial-gradient(circle at 32% 28%,#fffbe9 0%,#f6e2a0 26%,#dec07c 48%,var(--gold) 68%,#8a6d2f 100%);box-shadow:0 0 0 5px rgba(201,168,106,.16),0 0 20px 7px rgba(230,205,147,.42),0 5px 12px rgba(0,0,0,.55),inset 0 -4px 7px rgba(96,70,18,.5),inset 0 3px 4px rgba(255,255,255,.65);cursor:grab;transition:transform .25s ease,box-shadow .25s ease;animation:thumbGlow 2.8s ease-in-out infinite alternate}
+input[type=range]:hover::-webkit-slider-thumb,input[type=range]:active::-webkit-slider-thumb{transform:scale(1.14);box-shadow:0 0 0 6px rgba(201,168,106,.22),0 0 30px 11px rgba(230,205,147,.6),0 6px 14px rgba(0,0,0,.55),inset 0 -4px 7px rgba(96,70,18,.5),inset 0 3px 4px rgba(255,255,255,.7);cursor:grabbing;animation:none}
+input[type=range]:hover::-moz-range-thumb,input[type=range]:active::-moz-range-thumb{transform:scale(1.14);box-shadow:0 0 0 6px rgba(201,168,106,.22),0 0 30px 11px rgba(230,205,147,.6),0 6px 14px rgba(0,0,0,.55),inset 0 -4px 7px rgba(96,70,18,.5),inset 0 3px 4px rgba(255,255,255,.7);cursor:grabbing;animation:none}
+input[type=range]:focus-visible{outline:2px solid var(--gold-dim);outline-offset:6px}
+@keyframes thumbGlow{from{box-shadow:0 0 0 4px rgba(201,168,106,.13),0 0 14px 4px rgba(230,205,147,.32),0 5px 12px rgba(0,0,0,.55),inset 0 -4px 7px rgba(96,70,18,.5),inset 0 3px 4px rgba(255,255,255,.65)}to{box-shadow:0 0 0 6px rgba(201,168,106,.2),0 0 26px 10px rgba(230,205,147,.52),0 5px 12px rgba(0,0,0,.55),inset 0 -4px 7px rgba(96,70,18,.5),inset 0 3px 4px rgba(255,255,255,.65)}}
+@media (prefers-reduced-motion:reduce){input[type=range]::-webkit-slider-thumb,input[type=range]::-moz-range-thumb{animation:none}}
+.result{background:var(--panel);border:1px solid var(--gold-dim);border-radius:4px;padding:clamp(22px,3vw,36px);position:sticky;top:20px}
+.result .r-lab{font-size:12px;letter-spacing:.3em;color:var(--gold)}
+.result .amount{font-family:var(--en);font-weight:600;font-size:clamp(34px,4.6vw,54px);color:var(--gold2);line-height:1.2;margin:12px 0 4px}
+.result .amount small{font-size:.45em;color:var(--ink2);font-weight:400}
+.result .process{color:var(--ink2);font-size:15px;border-top:1px solid var(--line);margin-top:18px;padding-top:16px;display:grid;gap:7px}
+.result .process b{color:var(--ink);font-weight:500}
+.result .disclaimer{margin-top:18px;font-size:15px;color:var(--gold2);letter-spacing:.06em}
+.fineprint{color:var(--ink3);font-size:12px;line-height:1.9;margin-top:26px;font-weight:300}
+.rate-table{width:100%;border-collapse:collapse;margin-top:30px;font-size:14px}
+.rate-table th,.rate-table td{border:1px solid rgba(201,168,106,.18);padding:10px 12px;text-align:left}
+.rate-table th{color:var(--gold);letter-spacing:.14em;font-weight:500;background:var(--panel)}
+.rate-table td{color:var(--ink2);font-family:var(--en)}
+.rate-table td:first-child{font-family:var(--sans)}
+/* closing — the still layers rest at the video tail-frame composition (scale 1.01 about 50%/61%) and push from there to the end frame composed to the 52P reference (image-348); the interior-to-exterior move itself is carried by the video (see the handoff note below). The interior photo layer (lyr-room) is retired from the choreography: its through-the-window skyline is a different photograph from the skyline plate — measured China Zun top at 53.5% of frame height and 0.78× the plate tower's height — so the old mid-push dissolve could never register the two skylines and ghosted a double tower; it stays in the DOM at opacity 0 only. Layer order, back to front: the user's sky plate; the headline block — bold (600) black type stretched to ~96.7% of frame width with its glyph band at 35.8–49.8% of frame height, the gold TOWARDS IDEAL LIVING line tight beneath it; then the transparent skyline in its own stage IN FRONT of the type, pressing over wherever the two overlap (China Zun's top lands at ~37% of frame height, the top third stays clean sky); and on top of everything at the very bottom centre, the original FINENESS logo artwork (s52-2.png, wordmark + Chinese line, ~9% of frame width) — never typeset. The exterior layers push at different rates for parallax, and a slow drift keeps the end frame breathing */
+.closing{padding:0;min-height:100svh;display:flex;align-items:flex-start;justify-content:center;text-align:center;overflow:hidden}
+.closing .stage{position:absolute;inset:0;z-index:1;transform:scale(1.01);transform-origin:50% 61%}
+.closing.in .stage{transform:scale(1.45);transition:transform 5.5s linear}
+.closing .bldstage{position:absolute;inset:0;z-index:3;transform:scale(1.01);transform-origin:50% 61%}
+.closing.in .bldstage{transform:scale(1.45);transition:transform 5.5s linear}
+/* the drift stays parked while the push runs — two motions at once read as a judder; .live (added by the closing script the moment the push completes) starts the breathing from the parked scale(1), so it joins seamlessly */
+.closing .drift{position:absolute;inset:0;animation:none;transform:scale(1)}
+@keyframes closingDrift{from{transform:scale(1)}to{transform:scale(1.035)}}
+.closing .stage .lyr,.closing .bldstage .lyr{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.closing .stage .lyr-sky{z-index:1}
+.closing.in .stage .lyr-sky{transform:scale(1.05);transition:transform 5.5s linear}
+.closing .bldstage .lyr-bld{z-index:1}
+.closing.in .bldstage .lyr-bld{transform:translateY(1.4%) scale(1.13);transition:transform 5.5s linear}
+.closing .bldstage .lyr-room{z-index:2;opacity:0}
+.closing .shade{position:absolute;inset:0;z-index:4;background:linear-gradient(180deg,rgba(255,255,255,.30),rgba(255,255,255,0) 42%,rgba(24,19,12,.20));pointer-events:none}
+.closing .inner{position:relative;z-index:2;width:100%;padding:35vh 0 60px;opacity:0;transform:translateY(24px) scale(.985);transition:opacity 4.9s linear .3s,transform 4.9s linear .3s}
+.closing.in .inner{opacity:1;transform:none}
+.closing h2{font-family:var(--sans);font-size:min(8.2vw,14.4vh);font-weight:600;letter-spacing:.08em;white-space:nowrap;line-height:1.04;margin:0;color:#666}
+.closing .en2{font-family:var(--en);letter-spacing:.48em;margin:.7vh 0 0 .24em;color:#b08d57;font-size:clamp(13px,1.75vw,24px);font-weight:400;text-transform:uppercase}
+.closing .finisher{position:absolute;left:50%;bottom:2.8%;transform:translateX(-50%);z-index:6;text-align:center;opacity:0;transition:opacity 4.9s linear .5s;pointer-events:none}
+.closing.in .finisher{opacity:1}
+/* the finisher is the assembled 劉力寧 STUDIO lockup, bottom centre: the name typeset in gold sans beside the STUDIO artwork (s52-studio.png, lifted out of the deck's own lockup image — never redrawn, and its .75em height is untouched). The two are matched off the artwork's own measurements: its caps stand ≈ .89 of the artwork's height (≈ .67em on screen) with stems ≈ .10 of cap height, so the name is set in the site's sans (Noto Sans TC) at .8em/400, which puts its glyph height on the caps and its stem weight on the artwork's — one mark, one sans family (the earlier serif setting read as a different family next to the artwork's geometric sans and is gone). It is NOT sandwiched under the buildings: the building plate measures 99.6% fully opaque across the logo's band (x 45–55%, y 88–100%), so a logo between sky and buildings would be covered completely — it therefore rides on top of the buildings, with a soft edge shadow to lift the lettering off the plate */
+.closing .finisher .lockup{display:flex;align-items:center;justify-content:center;gap:.45em;font-size:clamp(20px,2.3vw,37px);filter:drop-shadow(0 1px 5px rgba(8,10,18,.5)) drop-shadow(0 0 14px rgba(8,10,18,.28))}
+.closing .finisher .lockup .lk-name{font-family:var(--sans);font-weight:400;font-size:.8em;line-height:1;letter-spacing:.05em;color:var(--ink2);white-space:nowrap}
+.closing .finisher .lockup img{height:.75em;width:auto}
+/* closing video handoff — on entry the user's muted 3.8s push video (1920×1080, has an AAC track so it is force-muted in JS as well) plays first, over still layers held exactly at the video's actual tail frame: skyline stages at scale(1.01) about origin 50%/61%, the room layer retired (opacity 0 in every state), the drift parked at scale(1) so nothing breathes mid-handoff, headline and logo held invisible. The hold was re-measured from the rendered page on 2026-11-19 (the earlier phase-correlation claim was re-checked, not trusted): video paused on its last frame vs the held stills, at 1600×900 and at 1877×1152, phase correlation offset (0,0) and skyline-band luminance NCC 0.97 both times — the stills and the tail frame register. The handoff fires early — at video-time 3.25s of 3.8s, on timeupdate — so the video crossfades out (.4s linear) across its own still-moving last frames while the stills continue from that hold to the composed end frame, and the headline, the gold line and the white logo fade in on the web layer (the video itself carries no text); there is no stopped tail frame at the join. Scrolling away strips every state class, so on return the video replays from the top and hands off again. If the video cannot load or play, .vidmode is never added (or is dropped by the watchdog) and io3's .in runs the same skyline push from the same tail composition on the stills alone — it no longer opens on the interior photo, whose window skyline cannot register with the skyline plate (see the closing note above) and ghosted a second China Zun over the plate's. */
+.zjcraft{display:flex;flex-direction:column}
+.zjcraft .zjg{display:grid;grid-template-columns:.92fr 1.06fr 1fr;grid-template-rows:37% 63%;gap:10px;aspect-ratio:1.41;flex:none}
+.zjcraft .zjg img{width:100%;height:100%;object-fit:cover;display:block;border-radius:3px}
+.zjcraft .zjg img:nth-child(1),.zjcraft .zjg img:nth-child(2){grid-row:1/3}
+/* craft group caption — bilingual title block inside the group figure: the Chinese title, the original slide's own English line, and a plain bilingual note on the four hand-made series */
+.zjcap{padding:20px 22px 16px;border-bottom:1px solid rgba(201,168,106,.16)}
+.zjcap h4{margin:0;font-size:clamp(21px,2.3vw,28px);font-weight:900;letter-spacing:.26em;color:var(--ink)}
+.zjcap .zjen{font-family:var(--en);color:var(--gold);letter-spacing:.18em;font-size:clamp(10px,1.05vw,13px);margin:7px 0 0}
+.zjcap .zjtxt{color:var(--ink2);font-size:14.5px;margin:9px 0 0;line-height:1.8}
+.zjcap .zjtxt span{display:block;color:var(--ink3);font-family:var(--en);font-size:12.5px;letter-spacing:.02em}
+/* 紫禁 slide 43 as one composite in the original slide's own three-column mosaic: left column two stacked, middle one tall, right column one wide over two small — no gaps, edges aligned */
+.zj43g{display:grid;grid-template-columns:23.6fr 26.9fr 25.9fr;gap:10px;height:100%}
+.zj43a,.zj43c{display:flex;flex-direction:column;gap:10px;min-width:0;min-height:0}
+.zj43a img,.zj43c>img{width:100%;height:auto;object-fit:cover;display:block;border-radius:3px;min-height:0}
+.zj43a img:first-child{flex:17.7 1 0}
+.zj43a img:last-child{flex:14.5 1 0}
+.zj43b{width:100%;height:100%;object-fit:cover;display:block;border-radius:3px}
+.zj43c>img{flex:17.7 1 0}
+.zj43c2{display:flex;gap:10px;flex:17.8 1 0;min-height:0}
+.zj43c2 img{height:100%;object-fit:cover;display:block;border-radius:3px;min-width:0}
+.zj43c2 img:first-child{flex:12.2 1 0}
+.zj43c2 img:last-child{flex:13.4 1 0}
+/* 天樾 2x2 group — the four originals rebuilt as a real grid in the reference arrangement (top: courtyard + bathroom axonometrics, shown whole with contain; bottom: staircase sketch + bedroom render), replacing the composite screenshot that used to sit on the wrong case */
+.tygrp{display:flex;flex-direction:column;gap:10px}
+.tygrp .tgrow{display:flex;gap:10px;flex:1 1 0;min-height:0}
+.tygrp .tgrow img{height:100%;object-fit:cover;display:block;border-radius:3px;min-width:0}
+.tygrp .tgrow img.fit{object-fit:contain}
+.tygrp .tgrow1 img:nth-child(1){flex:55 1 0}
+.tygrp .tgrow1 img:nth-child(2){flex:45 1 0}
+.tygrp .tgrow2 img:nth-child(1){flex:32 1 0}
+.tygrp .tgrow2 img:nth-child(2){flex:68 1 0}
+/* 盤古大觀 — rebuilt as the original slides' unit compositions, not a plain grid. Fig.1 (slide 45) = three units: the big study on the left, the dining room top-right with the slide's own LUXURY IN THE CLASSICS line standing in the gap, and plan + dining detail as one unit bottom-right. Fig.2 (slide 46) = five units: living room left, hall right, two hand-drawn perspectives overlapping top-centre and bottom-centre, and the text unit 古典东方 set in the serif face as a unit of its own in the middle gap (the project title itself stays in the sans, per the correction). Column/row proportions follow the slides' own placements, so cover-cropping is negligible. Units enter with mutual scroll damping: each starts offset on a different vector and settles on its own spring curve and delay when its own figure scrolls in (per-figure .play from pgIO below — not the case section's .in, which fires at the section head and spent all three figures' motion before the reader reached them); leaving the viewport resets them, so it replays. */
+.pgfig{container-type:inline-size;background:none;border:none}
+.pg1g{display:grid;grid-template-columns:61.4fr 8fr 30.5fr;gap:12px;aspect-ratio:100/42.9;position:relative}
+.pg1 .u-a{grid-column:1;grid-row:1}
+.pg1r{grid-column:3;grid-row:1;display:grid;grid-template-rows:1.15fr 1fr;gap:12px;min-height:0}
+.pg1 .u-c{display:flex;gap:10px;min-height:0}
+.pg1 .u-c .pgplan{flex:1.55 1 0}
+.pg1 .u-c .pgdet{flex:1 1 0}
+.pgu{overflow:hidden;border-radius:3px;min-width:0;min-height:0;opacity:0}
+.pgu img{width:100%;height:100%;object-fit:cover;display:block}
+.pg1 .u-c img{min-width:0}
+.pg2{position:relative;aspect-ratio:100/47.2}
+.pg2 .pgu{position:absolute;box-shadow:0 14px 34px rgba(0,0,0,.45)}
+.pg2 .u-a{left:0;top:12.3%;width:45.5%;height:72.5%}
+.pg2 .u-b{right:0;top:12.3%;width:44.5%;height:72.5%}
+.pg2 .u-c{left:50%;top:0;width:22.2%;height:28%;z-index:2}
+.pg2 .u-d{left:28.5%;bottom:0;width:21.5%;height:30.3%;z-index:2}
+.pg2 .u-t{left:50%;top:47%;transform:translate(-50%,-50%) scale(1.35);z-index:3;display:flex;align-items:center;justify-content:center;background:none;box-shadow:none;overflow:visible}
+.pg2 .u-t span{font-family:var(--serif);font-weight:900;font-size:clamp(20px,5vw,54px);font-size:4.4cqw;letter-spacing:.1em;color:#f5efe2;white-space:nowrap;text-shadow:0 2px 18px rgba(0,0,0,.55)}
+.pglux{position:absolute;left:59.5%;top:7%;z-index:3;font-family:var(--en);font-weight:700;font-size:clamp(13px,3.4vw,40px);font-size:3.9cqw;line-height:1.3;letter-spacing:.03em;color:#fff;text-shadow:0 2px 14px rgba(0,0,0,.5);opacity:0;transform:translateX(20px)}
+.pg1 .u-a{transform:translateX(-52px)}
+.pg1 .u-b{transform:translateY(-44px)}
+.pg1 .u-c{transform:translateY(44px)}
+.pg2 .u-a{transform:translateX(-48px)}
+.pg2 .u-b{transform:translateX(48px)}
+.pg2 .u-c{transform:translateY(-36px) scale(.92)}
+.pg2 .u-d{transform:translateY(36px) scale(.92)}
+.pgfig.play .pgu{opacity:1;transform:none;transition:opacity .9s ease,transform 1.25s cubic-bezier(.19,1.25,.3,1)}
+.pg1.play .u-b{transition-delay:.12s;transition-duration:1.35s}
+.pg1.play .u-c{transition-delay:.24s}
+.pg1.play .pglux{opacity:1;transform:none;transition:opacity .8s ease .5s,transform 1.1s cubic-bezier(.19,1.25,.3,1) .5s}
+.pg2.play .u-b{transition-delay:.1s}
+.pg2.play .u-c{transition-delay:.22s;transition-duration:1.4s}
+.pg2.play .u-d{transition-delay:.3s;transition-duration:1.4s}
+.pg2.play .u-t{transform:translate(-50%,-50%) scale(1);transition:opacity .7s ease .48s,transform 1.5s cubic-bezier(.16,1.3,.3,1) .48s}
+/* Pangu figure 3 — the bedroom slide rebuilt as three units on the slide's own composition, animated like figures 1 and 2: the big bedroom slides in from the left, the screen-and-bedhead detail drops from the top, and the Top Luxury Customization wordmark rises last in the lower-right block */
+.pg3{position:relative;aspect-ratio:100/52.6;background:#0d0a06}
+.pg3 .pgu{position:absolute;box-shadow:0 14px 34px rgba(0,0,0,.45)}
+.pg3 .u-a{left:0;top:0;width:63.5%;height:100%;transform:translateX(-52px)}
+.pg3 .u-b{right:0;top:0;width:34.5%;height:63%;transform:translateY(-44px)}
+.pg3 .u-t{right:0;bottom:0;width:34.5%;height:33%;transform:translateY(30px);display:flex;align-items:center;justify-content:center;background:none;box-shadow:none;overflow:visible}
+.pg3 .u-t span{font-family:var(--en);font-weight:700;font-size:clamp(15px,3.4vw,38px);font-size:3.4cqw;line-height:1.28;letter-spacing:.02em;color:#fff;text-align:center;text-shadow:0 2px 14px rgba(0,0,0,.5)}
+.pg3.play .u-b{transition-delay:.14s;transition-duration:1.35s}
+.pg3.play .u-t{transition:opacity .8s ease .34s,transform 1.15s cubic-bezier(.19,1.25,.3,1) .34s}
+@media (prefers-reduced-motion:reduce){.pgfig .pgu,.pgfig .pglux{opacity:1!important;transform:none!important;transition:none!important}.pgfig .pg2 .u-t{transform:translate(-50%,-50%)!important}}
+/* 南通 douyin pair — the screenshots are the content (social proof), so they are shown complete at natural aspect, never cover-cropped: the video frame keeps its like / comment / collect counts on the right edge, the comments shot keeps every like count; sized down to a modest centred pair */
+.dyfig{background:none;border:none}
+.dyrow{display:flex;gap:12px;justify-content:center}
+.cg .dyrow img{height:min(470px,54vh);width:auto;border:1px solid rgba(201,168,106,.16);border-radius:4px}
+@media(max-width:820px){.cg .dyrow img{height:auto;width:calc(50% - 6px)}}
+.closing .vid{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:5;opacity:1;transition:opacity .4s linear;pointer-events:none}
+.closing:not(.vidmode) .vid{display:none}
+.closing.handed .vid{opacity:0}
+.closing.vidmode .drift{animation:none;transform:scale(1)}
+.closing.vidmode .stage{transform:scale(1.01);transform-origin:50% 61%;transition:none}
+.closing.vidmode .bldstage{transform:scale(1.01);transform-origin:50% 61%;transition:none}
+.closing.handed .stage,.closing.handed .bldstage{transform-origin:50% 61%}
+.closing.vidmode .stage .lyr-sky{transform:none;transition:none}
+.closing.vidmode .bldstage .lyr-bld{transform:none;transition:none}
+.closing.vidmode .bldstage .lyr-room{opacity:0;transition:none}
+.closing.vidmode .inner{opacity:0;transform:translateY(24px) scale(.985);transition:none}
+.closing.vidmode .finisher{opacity:0;transition:none}
+/* one timeline, one speed: everything after the handoff is linear — no ease ramp, no dwell. Budget, closing start → settled: the 3.8s clip plays at 1.35x and hands off early, at video-time 3.25s (≈2.4s in, triggered on timeupdate, not on 'ended', so the stills start moving while the video is still playing its last frames and the two overlap through the .4s linear crossfade — no frozen tail frame at the join); the stills then push 2.9s linear (done ≈5.3s), the headline fades/rises 2.7s linear from the handoff (settled ≈5.1s) and the logo 2.7s linear +.15s (≈5.3s). The stills-only fallback runs the same shape on its own clock: 5.5s linear push, headline settled ≈5.2s (4.9s linear +.3s). Both paths land the whole closing inside 5–6s */
+.closing.handed .stage{transform:scale(1.45);transition:transform 2.9s linear}
+.closing.handed .bldstage{transform:scale(1.45);transition:transform 2.9s linear}
+.closing.handed .stage .lyr-sky{transform:scale(1.05);transition:transform 2.9s linear}
+.closing.handed .bldstage .lyr-bld{transform:translateY(1.4%) scale(1.13);transition:transform 2.9s linear}
+.closing.handed .inner{opacity:1;transform:none;transition:opacity 2.7s linear,transform 2.7s linear}
+.closing.in:not(.vidmode) .inner{opacity:1;transform:none;transition:opacity 4.9s linear .3s,transform 4.9s linear .3s}
+.closing.handed .finisher{opacity:1;transition:opacity 2.7s linear .15s}
+.closing.in:not(.vidmode) .finisher{opacity:1;transition:opacity 4.9s linear .5s}
+.closing.live .drift{animation:closingDrift 18s ease-in-out infinite alternate}
+@media (prefers-reduced-motion:reduce){.closing .stage{transform:scale(1.3)}.closing .bldstage{transform:scale(1.3)}.closing.in .stage,.closing.in .bldstage{transition:none}.closing .drift{animation:none}.closing .stage .lyr,.closing .bldstage .lyr{transition:none}.closing .stage .lyr-sky{transform:scale(1.05)}.closing .bldstage .lyr-bld{transform:translateY(1.4%) scale(1.13)}.closing .bldstage .lyr-room{display:none}.closing .inner{opacity:1;transform:none;transition:none}.closing .finisher{opacity:1;transition:none}}
+footer{padding:26px 0 10px;text-align:center;color:var(--ink3);font-size:12px;letter-spacing:.2em}
+</style>
+</head>
+<body>
+<div id="progress"></div>
+
+<!-- 1P 封面 -->
+<header class="cover" id="top">
+  <div class="bg"><img src="assets/cover-hand.jpg" alt="" aria-hidden="true"><video class="cvid" src="assets/cover-hand.mp4" poster="assets/cover-hand.jpg" autoplay muted loop playsinline webkit-playsinline="true" x5-playsinline="true" x5-video-player-type="h5" preload="auto" aria-hidden="true"></video></div>
+  <div class="shade"></div>
+  <div class="inner wrap">
+    <div class="coverfoot">
+      <div class="brandblock">
+        <h1 class="brandname"><span class="brandgold">劉力寧·</span>設計研究室</h1>
+        <p class="sub2">Liu Lining Design Studio</p>
+      </div>
+      <p class="scrollhint">向下瀏覽 · 私宅作品與全案交付 <span class="dn" aria-hidden="true">↓</span></p>
+    </div>
+  </div>
+</header>
+
+<!-- 2P 人物介紹 — 恢復事務所版 RYAN 創始人頁的原來版式與落入動效：大名自上落入、肖像居中壓名、簡介居側、姓名職銜隨後落入右下角；人物肖像與動效不動，文字換成設計師版 PPT 的人物介紹文案 -->
+<section id="profile">
+  <div class="wrap">
+    <article class="founder flip rv">
+      <p class="bigname"><span class="ol">RYAN</span><br><em>LIU</em></p>
+      <div class="photo"><img src="assets/founder-liu.png" alt="劉力寧先生黑白肖像" loading="lazy"></div>
+      <div class="bio-col">
+        <p class="bio">進修於意大利巴勒莫美院，多次日本遊學。他曾任職於國內一線上市設計院副院長，並擁有與全球頂級設計事務所合作經歷，參與和主理過國內外多類型奢華別墅與知名酒店。</p>
+        <p class="bio-en">Advanced Studies at Accademia di Belle Arti di Palermo, Italy, and multiple study tours in Japan. Former Vice President of a top-tier listed architectural design institute in China, with collaboration experience with world-renowned top design firms. He has participated in and led a wide range of luxury villas and prestigious hotels both domestically and internationally.</p>
+      </div>
+      <div class="nameblock">
+        <h3>劉力寧</h3>
+        <p class="role">高端全案室內設計師 · EST. 2001</p>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!-- 3P 資歷獎項 — 豎版 PPT 第 3 頁：左資歷、右獎項；第 3 頁原稿的六張證書獎項照片收尾，一律灰色蒙版，只作佐證 -->
+<section id="creds" style="background:var(--bg2)">
+  <div class="wrap">
+    <p class="kicker rv">Qualifications &amp; Awards</p>
+    <h2 class="title rv">資歷 <span class="gold">| 獎項</span></h2>
+    <div class="cred-grid">
+      <div class="rv">
+        <h3 class="cred-h">資歷</h3>
+        <ul class="cred-list">
+          <li><b>國家註冊高級室內建築師</b><span>執業資格</span></li>
+          <li><b>中國建築裝飾協會</b><span>資深會員</span></li>
+          <li><b>中國國際室內設計聯合會（CIIDA）</b><span>特邀編委 · 會員</span></li>
+          <li><b>2022 年第十四屆 CBDA 照明應用設計大賽</b><span>眾評團專家評委</span></li>
+          <li><b>2014 年第七屆中國 · 築巢獎</b><span>初選專家評委</span></li>
+        </ul>
+      </div>
+      <div class="rv">
+        <h3 class="cred-h">獎項</h3>
+        <ul class="cred-list">
+          <li><b>2013 年「金創意」國際空間設計大獎</b><span>十大精英設計</span></li>
+          <li><b>2013 年 讚頌 · 創造力 亞太室內設計精英邀請賽</b><span>最佳會所獎</span></li>
+          <li><b>2011–2012 年度 中國建築裝飾協會</b><span>影響力設計師大獎</span></li>
+          <li><b>2011「光 創所未見」照明大賽</b><span>優勝獎</span></li>
+          <li><b>2011 未來之家室內設計精英邀請賽</b><span>入圍獎</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="cred-photos rv">
+      <figure class="cp-tall-l"><img src="assets/cred-idg-trophy.jpg" alt="IDG 金創意獎獎杯：十大精英設計 · 人物獎" loading="lazy"></figure>
+      <figure class="cp-mid-t"><img src="assets/cred-trophy.jpg" alt="「光 創所未見」照明大賽優勝獎玻璃獎杯" loading="lazy"></figure>
+      <figure class="cp-mid-b"><img src="assets/cred-group.jpg" alt="頒獎現場合影：獲獎設計師們手持證書合影" loading="lazy"></figure>
+      <figure class="cp-tall-r"><img src="assets/cred-plaque.jpg" alt="影響力設計師獎牌：劉力寧，中國建築裝飾協會頒發" loading="lazy"></figure>
+      <figure class="cp-r-t"><img src="assets/cred-idg-cert.jpg" alt="IDG 金創意獎證書：劉力寧榮獲 2013 中國國際空間設計大獎年度十大精英設計師獎" loading="lazy"></figure>
+      <figure class="cp-r-b"><img src="assets/cred-cert.jpg" alt="榮譽證書：劉力寧榮獲 2011–2012 年度影響力設計師（會所空間類）" loading="lazy"></figure>
+    </div>
+  </div>
+</section>
+
+<!-- 4P 他是什麼樣的人 — 豎版 PPT 第 4 頁：海軍、遠行、父親三個單元並排，豎版堆疊 -->
+<section id="person">
+  <div class="wrap">
+    <p class="kicker rv">What Kind of Person Is He</p>
+    <h2 class="title rv attn">他是什麼樣的人？</h2>
+    <div class="person-grid">
+      <article class="person-card rv">
+        <figure><img src="assets/p-person-navy.jpg" alt="青年時代的劉力寧身著海軍制服立於軍艦之前、與外軍水兵在艦炮旁合影，及112艦航行拼貼" loading="lazy"></figure>
+        <div class="pc-body"><h3>青年時的他，曾是名海軍</h3><p>作戰第一梯隊的經歷，教會他極致的規則感與執行力。</p></div>
+      </article>
+      <article class="person-card rv">
+        <figure><img src="assets/p-person-travel.jpg" alt="劉力寧背包遠行拼貼：眺望海中孤峰、立於海岸崖岸望海、渡輪甲板" loading="lazy"></figure>
+        <div class="pc-body"><h3>他走遍了很多地方</h3><p>不相信虛無的詩和遠方，只相信腳下真實的生活。</p></div>
+      </article>
+      <article class="person-card rv">
+        <figure><img src="assets/p-person-father.jpg" alt="劉力寧身為父親拼貼：抱著年幼的孩子、教孩子寫書法、帶孩子滑雪" loading="lazy"></figure>
+        <div class="pc-body"><h3>他也是一位父親</h3><p>知道一個家的煙火氣，藏在每一個不被注意的細節裡。</p></div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- 5P 他的性格與特質 — 按用戶標註參考圖：標題與右側正方形詞雲圖同排，圖頂邊與標題文字頂邊齊平、整頁隨圖收矮；標題居左欄上方，三項特質成組居中於圖片高度正中，內容區下方一條通欄細橫線分隔 -->
+<section id="traits" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="traits-layout rv">
+      <div class="traits-left">
+        <div class="traits-head">
+          <p class="kicker">His Character and Traits</p>
+          <h2 class="title attn">他的性格與特質</h2>
+        </div>
+        <ul class="check-list trait-list traits-side">
+          <li><b>邏輯力</b><span>提前排掉所有坑，預算不跑偏</span></li>
+          <li><b>共情力</b><span>懂你沒說出口的生活習慣</span></li>
+          <li><b>手繪功底</b><span>每一筆都在還原你的真實生活</span></li>
+        </ul>
+      </div>
+      <figure class="frame traits-fig"><img src="assets/p-traits-square.jpg" alt="特質詞雲：邏輯力、審美、嚴謹、細膩、認真、創新、共情力、眼界、手繪功底、認知、文化修養、前瞻意識" loading="lazy"></figure>
+    </div>
+    <div class="traits-rule" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- 8P 痛點 -->
+<section class="pain" id="pain">
+  <div class="wrap">
+    <p class="kicker rv">What Can He Bring You</p>
+    <h2 class="big rv attn">他能帶給你什麼？</h2>
+    <figure class="pain-composite rv">
+      <img class="im1" src="assets/pain-room.jpg" alt="臥室空間模型圖，附 3D 模型 ID 標識" loading="lazy">
+      <img class="im2" src="assets/pain-blind.jpg" alt="蒙眼女子黑白照片，象徵業主在裝修中的盲目與無助" loading="lazy">
+    </figure>
+    <h3 class="fear-head rv">先說說，<span class="q">你是不是也怕這些——</span></h3>
+    <div class="pain-list">
+      <div class="pain-item rv">
+        <div class="no-mark" aria-hidden="true"></div>
+        <div><span class="tag">RENDER vs REALITY · 效果圖</span><div class="txt">看圖美上天，<s>實景醜到哭</s></div></div>
+        <p class="fear">圖與實景兩回事，是裝修最常見的第一坑。</p>
+      </div>
+      <div class="pain-item rv">
+        <div class="no-mark" aria-hidden="true"></div>
+        <div><span class="tag">BUDGET · 預算</span><div class="txt">前面報得低，<s>後期瘋狂增項</s></div></div>
+        <p class="fear">低價簽約、增項收尾，預算從一開始就失控。</p>
+      </div>
+      <div class="pain-item rv">
+        <div class="no-mark" aria-hidden="true"></div>
+        <div><span class="tag">DELIVERY · 落地</span><div class="txt">全靠自己盯，<s>設計師只管設計</s></div></div>
+        <p class="fear">落地圖紙甩給各廠家，全靠業主自己聯繫自己扛。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 9P 以前 -->
+<section id="then">
+  <div class="wrap split2">
+    <div class="rv">
+      <p class="kicker">In the Paper-and-Pen Era</p>
+      <h2 class="title attn">以前，在那個紙筆當道的年代，<span class="gold">他就是這麼還原實景的</span></h2>
+      <div class="paper-lines">
+        <p class="pl1">沒有捷徑</p>
+        <p class="pl2">圖與實景的距離，從落筆那一刻就開始縮短</p>
+      </div>
+    </div>
+    <div class="rv">
+      <div class="collage" style="margin-top:0">
+        <figure class="big" style="grid-column:span 12;aspect-ratio:1.55"><img src="assets/s09-2.jpg" alt="劉力寧手繪客廳透視草圖，紅筆批注，2020 年 10 月" loading="lazy"></figure>
+        <figure style="grid-column:span 5;aspect-ratio:0.661"><img src="assets/s09-1.jpg" alt="紙筆年代手繪圖紙原稿" loading="lazy"></figure>
+        <div style="grid-column:span 7;display:grid;gap:10px">
+          <figure style="aspect-ratio:1.486"><img src="assets/s09-3.jpg" alt="與手繪草圖對應的客廳實景照片" loading="lazy"></figure>
+          <figure style="aspect-ratio:1.501"><img src="assets/s09-4.jpg" alt="客廳落地實景照片" loading="lazy"></figure>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 10P 現在 -->
+<section id="now" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="rv" style="max-width:52em">
+      <p class="kicker">The Pit-Avoidance System</p>
+      <h2 class="title attn">而現在，是獨一無二的<span class="gold">「排坑」設計機制</span></h2>
+      <p class="lede">源自早年的境外酒店落地經驗：把會出問題的地方，在開工之前全部排掉。剖面、平面、軸測、節點——每一處銜接先在圖紙上走通，工地只負責照著做。</p>
+      <ul class="check-list">
+        <li>結構、水電、裝飾三套圖紙完整配合，不斷層</li>
+        <li>每個節點提前確認，開工後不靠臨場發揮</li>
+        <li>以過程文件層層確認，從源頭抑制惡意增項</li>
+      </ul>
+    </div>
+    <figure class="board1 rv"><img src="assets/paikeng.jpg" alt="排坑機制圖紙成組圖：剖面、平面、軸測、節點與落地實景完整呈現" loading="lazy"></figure>
+  </div>
+</section>
+
+<!-- 11-17P 怎麼做 -->
+<section id="how">
+  <div class="wrap">
+    <p class="kicker rv">How Does He Do It</p>
+    <h2 class="title rv attn">他是怎麼做這些事的</h2>
+    <p class="lede rv">四個階段、七個步驟。每一步都為了同一個結果：完美交付。</p>
+    <div class="timeline">
+      <div class="step step11 rv">
+        <div class="no">1-1<small>設計準備階段</small></div>
+        <div class="step11-text"><h3>生活方式探討 — <span class="goldline">摸清你的真實習慣</span></h3>
+        <p>收集需求，探討並提煉未被表達的需求，分析人與建築的關係。先懂生活，再談設計。</p></div>
+        <div class="gal gal-11">
+          <figure><img src="assets/s11-look.jpg" alt="《私宅設計客戶諮詢與需求》：設計師立於毛坯空間中仰望，先把需求想清楚" loading="lazy"></figure>
+          <figure class="form11"><img src="assets/s11-form.jpg" alt="生活需求表單截圖（清晰版）：廚房電器需求、廚房物品儲存收納需求度與臥區空間需求逐項勾選" loading="lazy"></figure>
+        </div>
+        <figure class="phone11" role="img" aria-label="手持手機的生活需求問卷"><img src="assets/s11-3.png" alt="手持手機填寫生活方式需求問卷（透明底原稿，手從左下角伸入，壓在文字區下半部之上）" loading="lazy"></figure>
+      </div>
+      <div class="step wide rv">
+        <div class="no">1-2<small>設計準備階段</small></div>
+        <div><h3>建築實地勘測 — <span class="goldline">提前發現戶型硬傷</span></h3>
+        <p>原始建築實錄，探究建築的各種改造可能性，並落成原始圖紙。問題發現得越早，代價越小。</p></div>
+        <div class="strip3 s12">
+          <figure style="aspect-ratio:0.616"><img src="assets/s12-6.jpg" alt="設計師站在樓梯上仰望，先到現場感受空間" loading="lazy"></figure>
+          <figure style="aspect-ratio:0.617"><img src="assets/s12-5.jpg" alt="帶樓梯與高窗采光的原始建築空間，勘測關注的重點" loading="lazy"></figure>
+          <figure style="aspect-ratio:1.321"><img src="assets/s12-2.jpg" alt="回到工作室落圖，把現場問題變成原始圖紙" loading="lazy"></figure>
+        </div>
+      </div>
+      <div class="step wide rv">
+        <div class="no">2-1<small>全案設計階段</small></div>
+        <div><h3>初步設計 — <span class="goldline">手繪草圖先定空間布局</span></h3>
+        <p>他對分析好的建築與人，思考給予業主更好的解決方案，耐心經歷「不斷建立、推翻、重建、再推翻」的取捨過程。</p></div>
+        <div class="strip3 s21">
+          <figure><img src="assets/s13-1.jpg" alt="圍桌頭腦風暴，碰撞初步方案" loading="lazy"></figure>
+          <figure><img src="assets/s13-4.jpg" alt="靜心思考：獨處時把方案想透（圖內「靜心思考」四字與底部技能關鍵詞完整呈現）" loading="lazy"></figure>
+          <figure><img src="assets/s13-3.jpg" alt="手繪草圖落紙，空間布局初定" loading="lazy"></figure>
+        </div>
+      </div>
+      <div class="step wide rv">
+        <div class="no">2-2<small>全案設計階段</small></div>
+        <div><h3>深化設計 — <span class="goldline">所有細節提前確認</span></h3>
+        <p>他將思考的結果，先草圖、再效果圖，甲乙雙方的不斷探討，看得見摸得著的物料，逐漸清晰。</p></div>
+        <figure class="stripfull"><img src="assets/s14-composite.jpg" alt="深化設計四格拼圖：手繪平面、對著大屏講解方案、圍桌翻看選材樣冊、成排的石材樣板" loading="lazy"></figure>
+      </div>
+      <div class="step rv">
+        <div class="no">2-3<small>全案設計階段 · 續</small></div>
+        <div><h3>節點圖紙 — <span class="goldline">每一個節點都清晰可見</span></h3>
+        <p>建築結構改造、專業水電系統和裝飾施工等層面的圖紙，完整配合不斷層，只為完美交付這一個結果。</p></div>
+        <figure class="stripfull"><img src="assets/s15-composite.png" alt="節點圖紙四格拼圖：施工圖冊翻頁、硬裝物料單、混凝土連接節點圖、機電分層軸測圖" loading="lazy"></figure>
+      </div>
+      <div class="step rv">
+        <div class="no">03<small>施工準備階段</small></div>
+        <div><h3>工作聯繫函 — <span class="goldline">開工前扼制惡意增項</span></h3>
+        <p>他以工作聯繫函方式推進，有據可依、層層鋪開確認，開工前就從源頭扼制惡意增項。</p></div>
+        <div class="gal gal3">
+          <figure style="aspect-ratio:0.704"><img src="assets/s16-1.jpg" alt="天樾書院項目工作聯繫函實物一" loading="lazy"></figure>
+          <figure style="aspect-ratio:0.701"><img src="assets/s16-2.jpg" alt="工作聯繫函實物二" loading="lazy"></figure>
+          <figure style="aspect-ratio:0.701"><img src="assets/s16-3.jpg" alt="工作聯繫函實物三" loading="lazy"></figure>
+          <figure style="aspect-ratio:0.704"><img src="assets/s16-4.jpg" alt="工作聯繫函實物四" loading="lazy"></figure>
+          <figure style="aspect-ratio:0.701"><img src="assets/s16-5.jpg" alt="工作聯繫函實物五" loading="lazy"></figure>
+          <figure style="aspect-ratio:0.704"><img src="assets/s16-6.jpg" alt="工作聯繫函實物六" loading="lazy"></figure>
+        </div>
+      </div>
+      <div class="step rv">
+        <div class="no">04<small>落地階段</small></div>
+        <div><h3>全案跟進</h3>
+        <p>他很親和，別把他當大師，而是一起築巢的好伙伴。</p></div>
+        <figure class="stripfull"><img src="assets/s17-composite.png" alt="落地跟進拼圖：施工現場照片與客戶在微信中給予的真實好評截圖" loading="lazy"></figure>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 18P 全案系統 -->
+<section class="systems" id="systems">
+  <div class="wrap">
+    <p class="kicker rv">Total System</p>
+    <h2 class="title rv">設計全案系統：<span class="gold">六大系統，一套邏輯</span></h2>
+    <div class="sysgrid">
+      <div class="frame rv" style="background:#efe7d3"><img src="assets/s18-2.png" alt="住宅三層爆炸軸測圖（原稿圖紙）" loading="lazy" style="object-fit:contain"></div>
+      <div class="syslist rv">
+        <div><b><i>01</i>拆改系統</b><span>土建、結構、施工工藝</span></div>
+        <div><b><i>02</i>美學系統</b><span>風格多樣化、色彩材質、搭配原則</span></div>
+        <div><b><i>03</i>產品系統</b><span>材質質感、產品選搭、價格把控</span></div>
+        <div><b><i>04</i>舒適系統</b><span>恒温、恒濕、恒氧、照明</span></div>
+        <div><b><i>05</i>工藝系統</b><span>細節、收口、對稱、銜接</span></div>
+        <div><b><i>06</i>收納系統</b><span>生活方式、人體工程學、動線分析、分類原則</span></div>
+      </div>
+    </div>
+    <div class="sysband rv" aria-hidden="true"></div>
+  </div>
+</section>
+
+<!-- 19P 過渡金句 -->
+<section style="padding:0">
+  <div class="quote-band">
+    <div class="q rv">
+      <p>落地品控好，並不完全因為開工後的服務做得好，<br>而是<em>開工前的準備做得好</em>。</p>
+    </div>
+    <figure class="rv"><img src="assets/art.jpg" alt="女子手持幾何毛氈模塊的藝術照片" loading="lazy"></figure>
+  </div>
+</section>
+
+<!-- 20P 案例章節 -->
+<section id="cases" style="padding-bottom:20px">
+  <div class="wrap">
+    <p class="kicker rv">Case Show · Residence Space</p>
+    <h2 class="title rv casestitle"><span class="ta">他的</span><span class="big">私宅作品</span></h2>
+    <p class="lede rv"><span class="emdot">不套模板</span>，所以不專注某種風格。</p>
+  </div>
+</section>
+<div class="wrap" id="casewrap"></div>
+
+<!-- 48P 多維度需求 -->
+<section id="dims">
+  <div class="wrap">
+    <p class="kicker rv">Every Family Is Different</p>
+    <h2 class="title rv">每家需求不同，側重不同，<span class="gold">不套模板才是匠心級定制</span></h2>
+    <p class="lede rv">Every family has different needs and priorities; true craftsmanship lies in avoiding cookie-cutter solutions.</p>
+    <div class="dim-tabs rv" id="dimtabs" role="tablist" aria-label="五個思考維度"></div>
+    <div class="dim-view rv" id="dimview"></div>
+  </div>
+</section>
+
+<!-- 49P 服務流程 -->
+<section id="service-flow">
+  <div class="wrap">
+    <p class="kicker rv">Full Category Service Flow</p>
+    <h2 class="title rv">全品類服務流程</h2>
+    <p class="lede rv">九個節點走完一個家。收費節點寫在明處：第一筆 35%，開工前累計收至 90%，開工後兩筆各 5%，合計 100%。</p>
+    <div class="flow-layout">
+    <div class="flowpct rv" id="flowpct" role="tablist" aria-label="收費節點百分比"></div>
+    <div class="flow-frame rv" id="flowscroll"><div class="flow-strip" id="flowstrip" role="img" aria-label="全品類服務流程原稿長圖（透明底，疊放於深色底上）"><img data-s="0" src="assets/s49-p01.png" alt="" aria-hidden="true" loading="lazy" style="left:0%;top:0%;width:23.49%"><img data-s="1" src="assets/s49-p02.png" alt="" aria-hidden="true" loading="lazy" style="left:23.49%;top:0%;width:18.206%"><img data-s="1" src="assets/s49-p03.png" alt="" aria-hidden="true" loading="lazy" style="left:23.49%;top:41.734%;width:10.502%"><img data-s="2" src="assets/s49-p04.png" alt="" aria-hidden="true" loading="lazy" style="left:41.696%;top:0%;width:2.709%"><img data-s="2" src="assets/s49-p05.png" alt="" aria-hidden="true" loading="lazy" style="left:33.992%;top:41.734%;width:10.413%"><img data-s="3" src="assets/s49-p06.png" alt="" aria-hidden="true" loading="lazy" style="left:44.405%;top:0%;width:10.591%"><img data-s="3" src="assets/s49-p07.png" alt="" aria-hidden="true" loading="lazy" style="left:44.405%;top:27.958%;width:9.902%"><img data-s="4" src="assets/s49-p08.png" alt="" aria-hidden="true" loading="lazy" style="left:54.996%;top:0%;width:27.82%"><img data-s="5" src="assets/s49-p09.png" alt="" aria-hidden="true" loading="lazy" style="left:82.815%;top:0%;width:17.185%"><img data-s="4" src="assets/s49-p10.png" alt="" aria-hidden="true" loading="lazy" style="left:54.307%;top:27.958%;width:28.508%"><img data-s="5" src="assets/s49-p11.png" alt="" aria-hidden="true" loading="lazy" style="left:82.815%;top:27.958%;width:17.185%"><img data-s="4" src="assets/s49-p12.png" alt="" aria-hidden="true" loading="lazy" style="left:54.307%;top:41.734%;width:21.514%"><img data-s="5" src="assets/s49-p13.png" alt="" aria-hidden="true" loading="lazy" style="left:75.821%;top:41.734%;width:24.179%"><img data-s="4" src="assets/s49-p14.png" alt="" aria-hidden="true" loading="lazy" style="left:54.307%;top:51.864%;width:28.264%"><img data-s="5" src="assets/s49-p15.png" alt="" aria-hidden="true" loading="lazy" style="left:82.571%;top:51.864%;width:17.429%"></div></div></div>
+  </div>
+</section>
+
+<!-- 50P 設計流程 -->
+<section id="design-flow" style="background:var(--bg2)">
+  <div class="wrap">
+    <p class="kicker rv">Full Category Design Process</p>
+    <h2 class="title rv">全品類設計流程</h2>
+    <p class="lede rv">七個階段環環相扣。</p>
+    <div class="dflow rv" id="dflow"></div>
+  </div>
+</section>
+
+<!-- 51P 報價器 -->
+<section class="calc" id="calc">
+  <div class="wrap">
+    <p class="kicker rv">Design Fee Standard</p>
+    <h2 class="title rv">設計取費 <span class="gold">· 互動報價</span></h2>
+    <p class="lede rv">選好面積、服務類型與複雜程度，即時得出對外報價區間與計算過程。</p>
+    <div class="calc-grid">
+      <div>
+        <div class="field">
+          <span class="lab">項目面積</span>
+          <div class="area-row"><input id="area" type="number" inputmode="numeric" min="30" max="5000" step="10" value="380" aria-label="項目面積，平方米"><span class="unit">㎡</span></div>
+          <input id="arearange" type="range" min="50" max="2000" step="10" value="380" aria-label="面積滑桿">
+          <p style="color:var(--ink3);font-size:13px;margin:6px 0 0" id="bandnote"></p>
+        </div>
+        <div class="field">
+          <span class="lab">服務類型</span>
+          <div class="seg" id="svcseg">
+            <button type="button" data-s="1" class="on">托管全案設計<small>室內外概念＋方案＋深化＋軟裝＋落地配合</small></button>
+            <button type="button" data-s="0.85">自建房遠程設計（全案版）<small>室內外概念＋方案＋深化＋軟裝，另含室內反推建築的建築設計；不含落地配合</small></button>
+            <button type="button" data-s="0.7">自建房遠程設計（顧問版）<small>室內外概念＋方案＋軟裝</small></button>
+            <button type="button" data-s="0.2">異地概念包<small>室內外分析＋概念＋平面布局</small></button>
+          </div>
+          <p class="fineprint" style="margin-top:12px">自建房遠程設計（全案版）不含機電暖通給排水系統設計與結構設計；如需此類服務，另按項目商議。</p>
+        </div>
+        <div class="field" id="gradefield">
+          <span class="lab">設計複雜程度</span>
+          <div class="seg" id="gradeseg">
+            <button type="button" data-g="1">Ⅰ · 簡約實用<small>功能簡單，滿足基本居住需求</small></button>
+            <button type="button" data-g="2" class="on">Ⅱ · 品質進階<small>功能完備、系統設計要求較高，部分需要定制工藝提高品質</small></button>
+            <button type="button" data-g="3">Ⅲ · 奢華定制<small>功能超標準、所有細節考量極深，約相當於五星與白金五星級以上酒店標準</small></button>
+          </div>
+        </div>
+        <table class="rate-table" aria-label="設計取費標準表">
+          <tr><th>空間體量</th><th>Ⅰ 簡約實用</th><th>Ⅱ 品質進階</th><th>Ⅲ 奢華定制</th></tr>
+          <tr><td>500㎡ 以內</td><td>400–600 · min 4萬</td><td>600 · min 6萬</td><td>850 · min 8.5萬</td></tr>
+          <tr><td>500–1000㎡</td><td>300–400</td><td>400–600</td><td>600–850</td></tr>
+          <tr><td>1000㎡ 以上</td><td>200–300</td><td>200–400</td><td>300–600</td></tr>
+        </table>
+        <p style="color:var(--ink3);font-size:12.5px;margin-top:10px">單位：元/㎡。500㎡ 以內 100㎡ 起收（不足 100㎡ 按 100㎡ 計）；min 為單項目最低取費。</p>
+      </div>
+      <div class="result" aria-live="polite">
+        <span class="r-lab">對外報價區間 · ESTIMATED FEE</span>
+        <div class="amount" id="ramount">—</div>
+        <div class="process" id="rprocess"></div>
+        <p class="disclaimer">價格為對外報價，供參考類比；實際費用以項目洽談與合同為準。</p>
+        <p class="fineprint">備註：本標準包含方案設計、擴初設計、精裝修施工圖設計及機電末端點位設計；不包含機電暖通給排水系統設計、軟裝設計與五星級酒店專業照明設計。費用已含方案、效果圖、施工圖及現場配合費用（不含異地差旅費）；變更部位在 20% 以內原則上不另收費，超過 20% 適當取費；因甲方原因推翻已確定方案重做的，將重新取費。單獨取費遇面積較大項目，可協商適當下調。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 52P 封底 — 前推由用戶視頻承擔（室內→天際線），靜幀圖層自視頻尾幀構圖接上前推至終幀（按參考圖 image-348 構圖）；視頻不可用時靜幀單獨走同一構圖前推。室內照圖層已退出編排（其窗外天際線與天際線圖版為兩張不同的照片、無法對位，舊溶解會出雙塔重影）。層序由後至前：天空 → 大字與英文（600 字重黑字，橫貫約 96.7% 幀寬、字身落在 35.8–49.8% 幀高）→ 透底天際線（在文字之前，壓住重疊處，國貿三期頂端約 37% 幀高、頂部約三分之一淨空）→ 底部正中放「劉力寧 STUDIO」拼合標識（左為金色襯線文字「劉力寧」，右為自原標識圖抠出的 STUDIO 字圖 s52-studio.png，兩者字高對齊成一體；建築層在該帶實測 99.6% 不透明，夾層會被完全蓋住，故標識浮於建築層之上並加邊緣陰影，詳見 .finisher 註釋） -->
+<section class="closing" id="end">
+  <div class="stage" aria-hidden="true">
+    <div class="drift">
+      <img class="lyr lyr-sky" src="assets/closing-sky.jpg" alt="" loading="lazy">
+    </div>
+  </div>
+  <div class="inner rv">
+    <h2>邀您一同，共赴理想栖居</h2>
+    <p class="en2">Towards Ideal Living</p>
+  </div>
+  <div class="bldstage" aria-hidden="true">
+    <div class="drift">
+      <img class="lyr lyr-bld" src="assets/closing-buildings.webp" alt="" loading="lazy">
+      <img class="lyr lyr-room" src="assets/closing-hires.jpg" alt="" loading="lazy">
+    </div>
+  </div>
+  <div class="shade"></div>
+  <video class="vid" id="closingvid" muted playsinline preload="auto" src="assets/closing-push.mp4" aria-hidden="true"></video>
+  <div class="finisher">
+    <div class="lockup" role="img" aria-label="劉力寧 STUDIO">
+      <span class="lk-name" aria-hidden="true">劉力寧</span><img src="assets/s52-studio.png" alt="" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<nav class="chapters" aria-label="章節導覽">
+  <div class="wrap">
+    <a href="#profile">人物介紹</a><a href="#creds">資歷獎項</a><a href="#person">他這個人</a><a href="#pain">痛點</a><a href="#how">怎麼做</a><a href="#cases">案例</a><a href="#dims">多維需求</a><a href="#service-flow">流程</a><a href="#calc">報價</a>
+  </div>
+</nav>
+
+<script>
+/* cover brand block is typeset on the web layer over the cover video: the studio's Chinese name as the main line, its English name beneath */
+
+/* reveal on scroll — late trigger, always replayable. Two observers split the job: io's root is shrunk by 50% at the bottom, so .in is added only once an element's top has crossed the viewport's vertical midpoint — every entrance starts at least halfway in, never at a third, and the whole motion plays while the reader is looking at it; ioOut watches the full viewport and removes .in only once the element has completely left the screen, so scrolling back replays every entrance instead of firing only once. The #how steps and the founder pages have their own observers below and are skipped here. */
+var ioSticky='#dimtabs,#flowpct,#flowscroll,#dflow'; /* containers holding buttons/tabs stay revealed once shown, so their controls are never left transparent off-screen; every presentational entrance still replays */
+var io=new IntersectionObserver(function(es){es.forEach(function(e){var t=e.target;if(t.matches(ioSticky)){if(e.isIntersecting){t.classList.add('in');io.unobserve(t);}}else if(e.isIntersecting){t.classList.add('in');}});},{threshold:0,rootMargin:'0px 0px -50% 0px'});
+var ioOut=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting&&!e.target.matches(ioSticky))e.target.classList.remove('in');});},{threshold:0});
+document.querySelectorAll('.rv').forEach(function(el){if(el.matches('#how .step,.founder,.sysgrid .frame,.syslist,.quote-band .q,.quote-band figure,.pain-item,.fear-head,#now .rv'))return;io.observe(el);ioOut.observe(el);});
+/* earlier-line reveals — the world-map page (item: title a touch earlier, the map following with the same gap as before) and the pit-avoidance page (all its text a touch earlier) leave the general midpoint rule for a line 12% higher up the viewport; replay removal still runs through ioOut */
+var earlyIO=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)e.target.classList.add('in');});},{threshold:0,rootMargin:'0px 0px -38% 0px'});
+document.querySelectorAll('#now .rv').forEach(function(el){earlyIO.observe(el);ioOut.observe(el);});
+/* pain page: the fear headline used to need six scrolls after the photo — it now fires on the -28% line (one scroll after the photo). The first pain item keeps the old midpoint line (one scroll after the headline, as before), and items two and three are added with it, cascading in on their CSS delays instead of waiting for more scrolls while the next page arrives */
+var fearEl=document.querySelector('.fear-head');
+if(fearEl){var fearIO=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)fearEl.classList.add('in');});},{threshold:0,rootMargin:'0px 0px -28% 0px'});
+  var fearOut=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)fearEl.classList.remove('in');});},{threshold:0});
+  fearIO.observe(fearEl);fearOut.observe(fearEl);}
+var painList=document.querySelector('.pain-list');
+if(painList){var painItems=painList.querySelectorAll('.pain-item');
+  var painIO=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting)painItems.forEach(function(d){d.classList.add('in');});});},{threshold:0,rootMargin:'0px 0px -50% 0px'});
+  var painOut=new IntersectionObserver(function(es){es.forEach(function(e){if(!e.isIntersecting)painItems.forEach(function(d){d.classList.remove('in');});});},{threshold:0});
+  painIO.observe(painItems[0]);painOut.observe(painList);}
+/* how-steps: no pre-fire margin at all, and a step must be a solid half on screen before its photo entrances start; leaving the viewport resets them, so they replay on return */
+var stepIO=new IntersectionObserver(function(es){es.forEach(function(e){e.target.classList.toggle('in',e.isIntersecting);if(e.isIntersecting&&e.target.classList.contains('step11')){var ph=e.target.querySelector('.phone11');if(ph)ph.classList.add('phone-in');}});},{threshold:.5});
+document.querySelectorAll('#how .step').forEach(function(el){stepIO.observe(el);});
+/* systems page: the axonometric frame and the six points leave the general observer — its midline rule started their entrance while the grid was still arriving, and the six-point stagger was spent before the reader settled on the page. Each now follows the same per-element rule as the case figures: .in only once half of the element itself is on screen, removed once it has fully left, so the frame's settle and the six points' rise play in front of the reader and replay on return */
+var sysIO=new IntersectionObserver(function(es){es.forEach(function(e){if(e.intersectionRatio>=.5)e.target.classList.add('in');else if(!e.isIntersecting)e.target.classList.remove('in');});},{threshold:[0,.5]});
+document.querySelectorAll('.sysgrid .frame,.syslist').forEach(function(el){sysIO.observe(el);});
+/* founder page (2P, restored from the firm edition's RYAN page): the entrance is keyed to the page's own visible fraction, so the big name's landing zone is on screen when the drop starts and the whole descent plays in front of the reader in both directions. .in is removed only once the whole page has left the viewport, so the drop replays on return but never resets mid-page. Amplitude, duration and damping of the drop itself are untouched. (The trigger mechanism changed on 2026-11-20 — see the founderIO note below.) */
+var founderEls=[].slice.call(document.querySelectorAll('.founder'));
+function founderCheck(){
+  var vh=window.innerHeight;
+  founderEls.forEach(function(f){
+    var r=f.getBoundingClientRect();
+    if(f.classList.contains('in')){
+      if(r.bottom<-80||r.top>vh+80)f.classList.remove('in');
+      return;
+    }
+    var h=r.height||1;
+    var vis=Math.min(r.bottom,vh)-Math.max(r.top,0);
+    if(vis<0)vis=0;
+    if(vis>=.4*Math.min(h,vh))f.classList.add('in');
+  });
+}
+/* the scroll check above is only the backstop now: on phone webviews scroll events fire sparsely (often once, when the flick ends), and the old add-condition also demanded the page top sit no higher than −20% of its own height — a flick or an anchor jump could come to rest with the page filling the screen yet past that line, and the page then stayed invisible in front of the reader (reported 2026-11-20: 人物图片页没有). An IntersectionObserver does not depend on scroll events at all: it adds .in once 45% of the page is visible — from any landing position — and removes it only once the page has completely left the screen, so the drop still replays on return exactly as before. */
+var founderIO=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(e.intersectionRatio>=.45)e.target.classList.add('in');
+  else if(!e.isIntersecting)e.target.classList.remove('in');
+});},{threshold:[0,.45]});
+founderEls.forEach(function(f){founderIO.observe(f);});
+addEventListener('scroll',founderCheck,{passive:true});
+addEventListener('resize',founderCheck);
+addEventListener('load',founderCheck);
+founderCheck();
+
+/* transition quote (19P): this band is the last page of the intro, so its golden line is deliberately NOT on the general reveal — the general rule fires at the viewport midpoint, while the band is still arriving. A founder-style scroll check instead: .in is given to the text and the photo only once the band is fully presented — its visible height reaches (within a hair of) the whole band, or the whole viewport when the stacked mobile band is taller than the screen — so the reader first takes in the finished page, then the line lands (the drop itself is slower too, see quoteDrop). Removed only once the band has completely left the screen, so it replays on return. */
+var quoteBand=document.querySelector('.quote-band');
+var quoteQ=quoteBand?quoteBand.querySelector('.q'):null;
+var quoteFig=quoteBand?quoteBand.querySelector('figure'):null;
+function quoteCheck(){
+  if(!quoteBand||!quoteQ)return;
+  var vh=window.innerHeight;
+  var r=quoteBand.getBoundingClientRect();
+  if(quoteQ.classList.contains('in')){
+    if(r.bottom<-80||r.top>vh+80){quoteQ.classList.remove('in');if(quoteFig)quoteFig.classList.remove('in');}
+    return;
+  }
+  var h=r.height||1;
+  var vis=Math.min(r.bottom,vh)-Math.max(r.top,0);
+  if(vis<0)vis=0;
+  if(vis>=.55*Math.min(h,vh)&&r.top>=-.03*h){quoteQ.classList.add('in');if(quoteFig)quoteFig.classList.add('in');}
+}
+addEventListener('scroll',quoteCheck,{passive:true});
+addEventListener('resize',quoteCheck);
+addEventListener('load',quoteCheck);
+quoteCheck();
+
+/* progress */
+addEventListener('scroll',function(){var h=document.documentElement;var p=h.scrollTop/(h.scrollHeight-h.clientHeight||1);document.getElementById('progress').style.width=(p*100)+'%';},{passive:true});
+
+
+/* closing: entrance trigger — also replayable, the state resets off-screen and the entrance (the closing push) plays again on return */
+var io3=new IntersectionObserver(function(es){es.forEach(function(e){e.target.classList.toggle('in',e.isIntersecting);});},{threshold:.5});
+document.querySelectorAll('.closing').forEach(function(el){io3.observe(el);});
+
+/* cover video — the user's hand-reach clip is the cover ground: muted autoplay (the file carries an AAC track, so muted is set in the markup and re-asserted here), looping on the open-hand ending; it pauses while the cover is off screen and resumes on return, so it never burns cycles behind the page. If the file cannot load or play, the video hides and its own first frame — the still img layered beneath it — stays as the cover. Reduced-motion readers keep that still instead of the motion. All cover text lives on the web layer above; the video itself carries no text. */
+var coverVid=document.querySelector('.cover .cvid');
+if(coverVid){
+  coverVid.muted=true;coverVid.defaultMuted=true;
+  coverVid.addEventListener('error',function(){coverVid.style.display='none';},true);
+  if(window.matchMedia&&window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    coverVid.removeAttribute('autoplay');coverVid.removeAttribute('loop');coverVid.pause();coverVid.style.display='none';
+  }else{
+    /* autoplay alone proved unreliable in the phone webview this page is actually read in (reported 2026-11-20: 封面的视频不动 — the cover sat on its poster frame): some in-app browsers gate muted autoplay behind the WeChat bridge or a first gesture, and the observer's single play() attempt could be refused before the file was even ready. Playback is now attempted from every signal that can unlock it — immediately, when the data can play, on window load, whenever the cover is on screen, when the tab returns to the foreground, on the WeChat bridge-ready event, and on the reader's first touches or taps anywhere — while the observer still pauses it off screen so it never burns cycles behind the page. */
+    var coverInView=true;
+    function coverPlay(){if(coverInView&&coverVid.paused){var p=coverVid.play();if(p&&p.catch)p.catch(function(){});}}
+    var coverIO=new IntersectionObserver(function(es){es.forEach(function(e){coverInView=e.isIntersecting;if(e.isIntersecting)coverPlay();else coverVid.pause();});},{threshold:.05});
+    coverIO.observe(coverVid);
+    coverPlay();
+    coverVid.addEventListener('canplay',coverPlay);
+    addEventListener('load',coverPlay);
+    document.addEventListener('visibilitychange',function(){if(!document.hidden)coverPlay();});
+    document.addEventListener('WeixinJSBridgeReady',coverPlay,false);
+    ['touchstart','pointerdown','click'].forEach(function(ev){addEventListener(ev,coverPlay,{passive:true});});
+  }
+}
+
+/* closing video — plays first on entry, hands off to the still layers at its tail frame; scroll-out resets it for a clean replay; any load/play failure drops back to the image push that io3's .in already drives */
+var closingSec=document.querySelector('.closing'),cVid=document.getElementById('closingvid'),cVidOK=!!cVid,cLiveTimer=null,cWatchdog=null;
+if(cVid){
+  cVid.addEventListener('error',function(){cVidOK=false;closingSec.classList.remove('vidmode','handed','live');},true);
+  function cHandoff(){
+    if(!closingSec.classList.contains('vidmode')||closingSec.classList.contains('handed'))return;
+    closingSec.classList.add('handed');
+    clearTimeout(cLiveTimer);
+    cLiveTimer=setTimeout(function(){closingSec.classList.add('live');},2900);
+  }
+  /* overlap handoff: take over 0.55s of video time BEFORE the clip ends, while it is still moving — the video fades out over .4s linear across its own last frames as the stills start pushing, so there is no frozen tail frame and no dwell at the join; 'ended' remains only as a backstop */
+  cVid.addEventListener('timeupdate',function(){
+    if(cVid.duration&&cVid.currentTime>=cVid.duration-.55)cHandoff();
+  });
+  cVid.addEventListener('ended',cHandoff);
+  var cIO=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting){
+      if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+      if(!cVidOK){/* stills-only fallback: io3's .in runs the same 5.5s linear push; the drift joins only once it completes, never alongside it */
+        clearTimeout(cLiveTimer);
+        cLiveTimer=setTimeout(function(){closingSec.classList.add('live');},5500);
+        return;}
+      closingSec.classList.add('vidmode');closingSec.classList.remove('handed','live');
+      cVid.muted=true;cVid.playbackRate=1.35;/* measured budget, closing start → headline settled ≈5.1s, everything done ≈5.3s: the 3.8s clip at 1.35x hands off at video-time 3.25s (≈2.4s in, see the timeupdate trigger above), the stills push on at a constant linear speed (2.9s, see the .handed rules) and the headline fades in linearly over 2.7s from the handoff — no ease ramp anywhere, no dwell at the join */
+      try{cVid.currentTime=0;}catch(err){}
+      var pr=cVid.play();if(pr&&pr.catch)pr.catch(function(){cVidOK=false;closingSec.classList.remove('vidmode','handed','live');clearTimeout(cLiveTimer);cLiveTimer=setTimeout(function(){closingSec.classList.add('live');},5500);});
+      clearTimeout(cWatchdog);
+      cWatchdog=setTimeout(function(){if(closingSec.classList.contains('vidmode')&&!closingSec.classList.contains('handed')&&cVid.readyState<2&&cVid.currentTime<.1){cVidOK=false;closingSec.classList.remove('vidmode','handed','live');clearTimeout(cLiveTimer);cLiveTimer=setTimeout(function(){closingSec.classList.add('live');},5500);}},3000);
+    }else{
+      closingSec.classList.remove('vidmode','handed','live');
+      clearTimeout(cLiveTimer);clearTimeout(cWatchdog);
+      cVid.pause();try{cVid.currentTime=0;}catch(err){}
+    }
+  });},{threshold:.5});
+  cIO.observe(closingSec);
+}
+
+/* 1-1 phone cutout: anchored at the step's lower-left corner over the text column. On scroll-in it slides in from the lower left (0.9s, slight un-rotation + scale settle), then floats gently (on the img, so the figure stays free for the hover zoom); hover alone scales it to 1.2x further over the text, leaving restores it — clicking it does nothing. The screen content itself never animates. Reduced motion shows it static. Its entrance is fired from two triggers so it cannot be lost again: the step's own stepIO (the same .in that reveals the step's photos) adds .phone-in the moment step 1-1 is half on screen, and the phone's own observer below replays it whenever the cutout itself crosses half visibility. */
+var phoneEl=document.querySelector('.step11 .phone11');
+if(phoneEl){
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches){phoneEl.classList.add('phone-in','settled');}
+  else{
+    var pIO=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){phoneEl.classList.add('phone-in');}else{phoneEl.classList.remove('phone-in','settled');}});},{threshold:.5});
+    pIO.observe(phoneEl);
+    phoneEl.addEventListener('animationend',function(ev){if(ev.animationName==='phoneInL')phoneEl.classList.add('settled');});
+  }
+}
+
+/* cases — full restoration: all 95 placements from PPT pp.21-47; sizes follow the original layout (large = key, small = secondary); s32-3 is placed twice in the original (32P & 33P) and shown in both positions */
+var CASES=[{"name": "科特迪瓦總統府秘書長宅邸", "en": "CÔTE D’IVOIRE · 2016", "desc": "地中海式海景奢華：白牆、玻璃、海藍與陽光，酒店度假感最強的一組實景。", "serif": false, "imgs": [{"f": "s21-1.jpg", "ar": 1.791, "s": 12}, {"f": "s22-1.jpg", "ar": 1.862, "s": 12}, {"f": "s22-2.jpg", "ar": 1.08, "s": 5, "p": 1}, {"f": "ci-bath.jpg", "ar": 1.512, "s": 7, "p": 1}], "n": 4}, {"name": "坦桑尼亞海邊別墅項目", "en": "TANZANIA · 2024", "desc": "熱帶現代、與自然共生：以泳池為中心組織生活；手繪與軸測，是方案推敲的痕跡。", "serif": false, "custom": "tz", "imgs": [], "n": 2}, {"name": "北京九章別墅", "en": "BEIJING · 2025", "desc": "自然靜奢風：挑高大空間、旋轉樓梯、面園餐廳，厚重而克制。", "serif": false, "fix": 1, "jz": 1, "imgs": [{"f": "s27-1.jpg", "ar": 1.04, "s": 6}, {"f": "s27-3.jpg", "ar": 1.04, "s": 6}, {"f": "s27-2.jpg", "ar": 0.6, "s": 4, "p": 1}, {"f": "s28-1.jpg", "ar": 0.6, "s": 4, "p": 1}, {"f": "s28-2.jpg", "ar": 0.6, "s": 4, "p": 1}, {"f": "s28-3.jpg", "ar": 0.765, "s": 7, "p": 1}, {"f": "s28-4.jpg", "ar": 0.546, "s": 5, "p": 1}], "n": 7}, {"name": "江苏南通自建别墅", "en": "NANTONG", "desc": "白色現代極簡獨棟。當地人拍發的短視頻，曾引出近兩千條評論——好房子，自己會說話。", "serif": false, "fix": 1, "nt": 1, "imgs": [{"f": "s29-1.jpg", "ar": 1.784, "s": 12}, {"f": "s30-1.jpg", "ar": 1.777, "s": 12}, {"f": "s30-2.jpg", "ar": 0.95, "s": 4, "p": 1}, {"f": "s30-3.jpg", "ar": 0.95, "s": 4, "p": 1}, {"f": "s30-4.jpg", "ar": 0.95, "s": 4, "p": 1}], "n": 8}, {"name": "北京天樾書院別墅", "en": "BEIJING · 2024", "desc": "淺米極簡、年輕家庭的宜居感：電競房、貓梯、車庫同框，是這一案最被記住的畫面。", "serif": false, "fix": 1, "grp": 1, "imgs": [{"f": "s32-1.jpg", "ar": 2.842, "s": 7, "p": 1}, {"f": "s33-4.jpg", "ar": 2.03, "s": 5, "p": 1}, {"f": "s33-5.jpg", "ar": 1.087, "s": 5, "p": 1}, {"f": "s34-1.jpg", "ar": 1.522, "s": 7, "p": 1}, {"f": "s34-3.png", "ar": 1, "s": 4, "a": 1, "p": 1}, {"f": "s34-2.jpg", "ar": 1.6, "s": 8, "p": 1}], "n": 10}, {"name": "北京碧海方舟別墅", "en": "BEIJING · 2022", "desc": "白色法式優雅：灰大理石、芥末黄與橙色點綴、弧形樓梯。", "serif": false, "fix": 1, "imgs": [{"f": "s35-1.jpg", "ar": 2.182, "s": 12}, {"f": "s36-1.jpg", "ar": 1.498, "s": 12}, {"f": "s36-2.jpg", "ar": 1.3, "s": 6, "p": 1}, {"f": "s36-3.jpg", "ar": 1.3, "s": 6, "p": 1}, {"f": "s37-1.jpg", "ar": 0.556, "s": 3, "p": 1}, {"f": "s37-2.jpg", "ar": 0.926, "s": 5, "p": 1}, {"f": "s37-3.jpg", "ar": 0.741, "s": 4, "p": 1}], "n": 7}, {"name": "北京望京府別墅", "en": "BEIJING · 2022", "desc": "淺灰現代極簡，加一面懸空工藝的石材藝術牆，把克制與張力放在同一個空間裡。", "serif": false, "fix": 1, "imgs": [{"f": "s38-1.jpg", "ar": 1.55, "s": 12}, {"f": "s38-2.jpg", "ar": 2.072, "s": 12}, {"f": "s39-1.jpg", "ar": 2.319, "s": 12}, {"f": "s39-3.jpg", "ar": 1.493, "s": 12}], "n": 4}, {"name": "北京中國府別墅", "en": "BEIJING · 2022", "desc": "奶油法式加暖木田園：人字拼地板、藤編、書房——鬆弛感是設計出來的。", "serif": false, "imgs": [{"f": "s40-1.jpg", "ar": 0.823, "s": 6}, {"f": "s40-2.jpg", "ar": 0.842, "s": 6}, {"f": "s40-3.jpg", "ar": 0.823, "s": 6}, {"f": "s41-1.jpg", "ar": 0.823, "s": 6}, {"f": "s41-2.jpg", "ar": 0.765, "s": 6}, {"f": "s41-3.jpg", "ar": 0.765, "s": 6}], "n": 6}, {"name": "北京紫禁壹號院別墅", "en": "BEIJING · 2020", "desc": "金色歐式的極致奢華：雕花金欄杆、石材拼花、水晶吊燈；而工藝過程，是這一案的第二賣點。", "serif": false, "fix": 1, "craft": 1, "zj43": 1, "imgs": [{"f": "s42-1.jpg", "ar": 1.333, "s": 6, "p": 1}, {"f": "s42-2.jpg", "ar": 1.333, "s": 6, "p": 1}], "n": 12}, {"name": "北京盤古大觀七星公館大平层", "en": "BEIJING · 2014", "desc": "深色中式古典奢華：藻井吊頂、格柵屏風、圓形金飾，全組案例中最「中式」的一案。", "serif": false, "one": 1, "pg": 1, "fix": 1, "imgs": [], "n": 10}];
+CASES[3].ntv=1; /* Nantong's first frame is the click-to-play video (see the grid builder) */
+CASES[4].video='assets/tianyue.mp4';CASES[4].poster='assets/poster-tianyue.jpg';CASES[4].vnote='案例漫遊 · 天樾書院';
+CASES[5].video='assets/bihai.mp4';CASES[5].poster='assets/poster-bihai.jpg';CASES[5].vnote='實拍漫遊 · 碧海方舟';
+var PGHTML='<figure class="pgfig pg1" style="grid-column:span 12"><div class="pg1g"><div class="pgu u-a"><img src="assets/s45-1.jpg" alt="盤古大觀書房：藻井吊頂、整牆書架與青花瓷瓶" loading="lazy"></div><div class="pg1r"><div class="pgu u-b"><img src="assets/s45-5.jpg" alt="盤古大觀餐廳：圓桌與水晶吊燈" loading="lazy"></div><div class="pgu u-c"><img class="pgplan" src="assets/s45-2.jpg" alt="盤古大觀平面圖" loading="lazy"><img class="pgdet" src="assets/s45-4.jpg" alt="盤古大觀餐廳一隅：金色雕花牆與福字圓飾" loading="lazy"></div></div><div class="pglux" aria-hidden="true">LUXURY<br>IN THE<br>CLASSICS</div></div></figure>'+
+'<figure class="pgfig pg2" style="grid-column:span 12"><div class="pgu u-a"><img src="assets/s46-1.jpg" alt="盤古大觀客廳" loading="lazy"></div><div class="pgu u-b"><img src="assets/s46-2.jpg" alt="盤古大觀門廳：圓形金飾與石材拼花地面" loading="lazy"></div><div class="pgu u-c"><img src="assets/s46-4.jpg" alt="盤古大觀手繪透視圖：門廳" loading="lazy"></div><div class="pgu u-d"><img src="assets/s46-3.jpg" alt="盤古大觀手繪透視圖：客廳" loading="lazy"></div><div class="pgu u-t"><span>古典东方</span></div></figure>'+
+'<figure class="pgfig pg3" style="grid-column:span 12"><div class="pgu u-a"><img src="assets/s47-1.jpg" alt="盤古大觀主臥：藻井吊頂、圓形窗夜景與花鳥屏風床頭牆" loading="lazy"></div><div class="pgu u-b"><img src="assets/s47-2.jpg" alt="盤古大觀主臥花鳥屏風與床頭細節" loading="lazy"></div><div class="pgu u-t"><span>Top Luxury<br>Customization</span></div></figure>';
+var TZHTML='<figure class="tz tz1" style="grid-column:span 12;aspect-ratio:1672/1377"><img class="tz-base" src="assets/tz-axo-base.jpg" alt="坦桑尼亞海邊別墅泳池軸測圖：以泳池為中心組織生活" loading="lazy"><div class="tz-mag"><img src="assets/tz-pool-circle.png" alt="泳池下沉式火盆休息區的圓形放大特寫，自火盆處緩緩放大"></div></figure>'+
+'<figure class="tz tz2" style="grid-column:span 12;aspect-ratio:1789/1000"><div class="tz2-row"><div class="tz2-left"><img src="assets/tz2-left2.jpg" alt="坦桑尼亞海邊別墅手繪：走廊小透視，Blowing comfort into every corner of the space" loading="lazy"></div><div class="tz2-right"><img src="assets/tz2-right2.jpg" alt="坦桑尼亞海邊別墅臥室衛浴套間軸測手繪" loading="lazy"></div></div></figure>';
+var cw=document.getElementById('casewrap');
+CASES.forEach(function(c,i){
+  var sec=document.createElement('article');sec.className='case rv'+(c.jz?' jzcase':'');
+  /* layout rhythm rotates per case so the ten projects do not read as one repeated template:
+     A = original spans as archived; B = an 8+4 opening pair, then the original flow;
+     C = a two-up opening of half-width frames, then the original flow. Spans only — every
+     figure keeps its own aspect ratio, so nothing is re-cropped. */
+  var v=i%3;
+  /* im.p marks an equal-height pair strip (Côte d'Ivoire: glass staircase + bathroom): the two
+     figures share one row, their aspect ratios are pre-matched to their spans (4 + 8 cols) so both
+     frames land at the same height — the tall staircase is centre-cropped shorter, and no empty
+     black block hangs under the wide bathroom frame. On narrow screens the pair stacks full-width. */
+  var grid=c.custom?TZHTML:c.imgs.map(function(im,j){
+    if(c.ntv&&j===0)return '<figure class="ntvid" style="grid-column:span 12;aspect-ratio:16/9"><video preload="none" poster="assets/nantong-poster.jpg" playsinline src="assets/nantong.mp4" aria-label="江蘇南通別墅實景視頻：臨街外景、環繞、黃昏與夜景、後院泳池花園、日出"></video><button type="button" class="ntplay" aria-label="播放江蘇南通別墅視頻"><span aria-hidden="true"></span></button></figure>';
+    var s=im.s;
+    if(!c.fix){
+      if(v===1&&j===0)s=8; else if(v===1&&j===1)s=4;
+      if(v===2&&j<4)s=6;
+    }
+    var cls=(s===12?'hero ':'')+(im.a?'alpha':'')+(im.p?' pairf':'');
+    return '<figure class="'+cls.trim()+'" style="grid-column:span '+s+';aspect-ratio:'+im.ar+'"><img src="assets/'+im.f+'" alt="'+c.name+' 案例圖 '+(j+1)+'" loading="lazy"></figure>';
+  }).join('');
+  if(c.zj43)grid+='<figure class="zj43" style="grid-column:span 12;aspect-ratio:2.14"><div class="zj43g"><div class="zj43a"><img src="assets/s43-2.jpg" alt="北京紫禁壹號院別墅 案例圖 3" loading="lazy"><img src="assets/s43-1.jpg" alt="北京紫禁壹號院別墅 案例圖 4" loading="lazy"></div><img class="zj43b" src="assets/s43-3.jpg" alt="北京紫禁壹號院別墅 案例圖 5" loading="lazy"><div class="zj43c"><img src="assets/s43-6.jpg" alt="北京紫禁壹號院別墅 案例圖 6" loading="lazy"><div class="zj43c2"><img src="assets/s43-4.jpg" alt="北京紫禁壹號院別墅 案例圖 7" loading="lazy"><img src="assets/s43-5.jpg" alt="北京紫禁壹號院別墅 案例圖 8" loading="lazy"></div></div></div></figure>';
+  if(c.grp)grid+='<figure class="tygrp" style="grid-column:span 12;aspect-ratio:4/3"><div class="tgrow tgrow1"><img class="fit" src="assets/s34-6.png" alt="北京天樾書院別墅 庭院軸測圖" loading="lazy"><img class="fit" src="assets/s34-7.png" alt="北京天樾書院別墅 衛生間軸測圖" loading="lazy"></div><div class="tgrow tgrow2"><img src="assets/s34-4.png" alt="北京天樾書院別墅 樓梯手繪圖" loading="lazy"><img src="assets/s34-5.jpg" alt="北京天樾書院別墅 臥室效果圖" loading="lazy"></div></figure>';
+  if(c.dy)grid+='<figure class="dyfig" style="grid-column:span 12"><div class="dyrow"><img src="assets/s30-6.jpg" alt="江蘇南通別墅 抖音視頻截圖：別墅外景，點贊 3.1 萬、評論 1949、收藏 1331、分享 3596 完整可見" loading="lazy"><img src="assets/s30-7.png" alt="江蘇南通別墅 抖音評論區截圖：共 1949 條評論，熱評點贊 1442、1204、395、318、264" loading="lazy"></div></figure>';
+  /* Nantong closing row: only the wall detail survives from the old vertical row — the staircase and bedroom are gone — and the two Douyin captures move up beside it, three span-4 frames aligned with the row above; the captures stay contained and whole */
+  if(c.nt)grid+='<figure class="pairf ntv" style="grid-column:span 4;aspect-ratio:.68"><img src="assets/s31-2.jpg" alt="江蘇南通別墅 牆面細節：米色護牆板與燈龕" loading="lazy"></figure><figure class="pairf ntv dyv" style="grid-column:span 4;aspect-ratio:.68"><img src="assets/s30-6.jpg" alt="江蘇南通別墅 抖音視頻截圖：別墅外景，點贊 3.1 萬、評論 1949、收藏 1331、分享 3596 完整可見" loading="lazy"></figure><figure class="pairf ntv dyv" style="grid-column:span 4;aspect-ratio:.68"><img src="assets/s30-7.png" alt="江蘇南通別墅 抖音評論區截圖：共 1949 條評論，熱評點贊 1442、1204、395、318、264 完整可見" loading="lazy"></figure>';
+  if(c.pg)grid=PGHTML+grid;
+  if(c.craft)grid+='<figure class="zjcraft" style="grid-column:span 12"><div class="zjcap"><h4>工匠精神</h4><p class="zjen">MASTER CRAFTSMANSHIP FOR LUXURY BESPOKE INTERIORS</p><p class="zjtxt">石材拼花、石材拼貼、石雕件與雕花木椅白坯——從圖紙到成品，皆出自匠人之手。<span>Stone marquetry and inlay, carved stonework and carved-wood chair blanks — made by hand, from drawing to finished piece.</span></p></div><div class="zjg"><img src="assets/s44-1.jpg" alt="紫禁壹號院 工匠精神系列 石材拼花花鳥" loading="lazy"><img src="assets/s44-2.jpg" alt="紫禁壹號院 工匠精神系列 石材拼貼山水" loading="lazy"><img src="assets/s44-3.jpg" alt="紫禁壹號院 工匠精神系列 石雕件" loading="lazy"><img src="assets/s44-4.jpg" alt="紫禁壹號院 工匠精神系列 雕花木椅白坯" loading="lazy"></div></figure>';
+  var vid=c.video?'<div class="casevid ntvid"><video preload="none" poster="'+c.poster+'" playsinline src="'+c.video+'" aria-label="'+c.vnote+'"></video><button type="button" class="ntplay" aria-label="播放'+c.name+'案例視頻"><span aria-hidden="true"></span></button></div><p class="video-note">'+c.vnote+'</p>':'';
+  var num=(i+1<10?'0':'')+(i+1);
+  sec.innerHTML='<span class="bgnum" aria-hidden="true">'+num+'</span><div class="case-head'+(i%2?' flip':'')+'"><div><span class="idx">CASE '+num+' · RESIDENCE SPACE</span><h3 class="'+(c.serif?'serif':'')+'">'+c.name+'</h3><span class="meta">'+c.en+'</span></div><p class="desc one" style="--dn:'+(c.desc.length+1.5)+'">'+c.desc+'</p></div><div class="cg">'+grid+'</div>'+vid;
+  cw.appendChild(sec);io.observe(sec);ioOut.observe(sec);
+});
+
+/* Tanzania figures: a dedicated late trigger per figure — .play is added only when half the figure is actually on screen (the general .case.in fired near the section top, long before these figures arrived, so the motion was spent unseen) and removed once the figure has essentially left, so scrolling back replays both entrances */
+var tzIO=new IntersectionObserver(function(es){es.forEach(function(e){if(e.intersectionRatio>=.5)e.target.classList.add('play');else if(e.intersectionRatio<.08)e.target.classList.remove('play');});},{threshold:[0,.08,.5]});
+document.querySelectorAll('figure.tz').forEach(function(f){tzIO.observe(f);});
+/* Pangu figures: the same per-figure late trigger, for the same reason — the unit entrances used to hang off the whole case section's .in, which the general observer adds the moment the section's head reaches the viewport, so all three figures' unit choreography played out at the top of the case while figures 2 and 3 were still far below the fold and the reader never saw any of it. Now each figure gets .play only when half of IT is on screen, and loses it once it has essentially left, so every figure's units animate in front of the reader and replay on return */
+var pgIO=new IntersectionObserver(function(es){es.forEach(function(e){if(e.intersectionRatio>=.5)e.target.classList.add('play');else if(e.intersectionRatio<.06)e.target.classList.remove('play');});},{threshold:[0,.06,.5]});
+document.querySelectorAll('figure.pgfig').forEach(function(f){pgIO.observe(f);});
+/* Jiuzhang figures: each figure rises in as it itself arrives (half of it on screen), staggered three to a row; leaving the viewport resets it, so the entrance replays on return */
+var jzIO=new IntersectionObserver(function(es){es.forEach(function(e){if(e.intersectionRatio>=.5)e.target.classList.add('jin');else if(!e.isIntersecting)e.target.classList.remove('jin');});},{threshold:[0,.5]});
+document.querySelectorAll('.jzcase .cg figure').forEach(function(f,i){f.style.transitionDelay=((i%3)*.09)+'s';jzIO.observe(f);});
+/* all remaining case figures (every case except Jiuzhang's own choreography, Tanzania's bespoke pair and Pangu's unit figures): each figure rises in as it itself arrives — half the figure on screen, so the motion is never spent below the fold — staggered three to a row; leaving the viewport resets it, so the entrance replays on return */
+var cfIO=new IntersectionObserver(function(es){es.forEach(function(e){if(e.intersectionRatio>=.5)e.target.classList.add('cin');else if(!e.isIntersecting)e.target.classList.remove('cin');});},{threshold:[0,.5]});
+document.querySelectorAll('.case:not(.jzcase) .cg figure:not(.tz):not(.pgfig)').forEach(function(f,i){f.classList.add('cfv');f.style.transitionDelay=((i%3)*.08)+'s';cfIO.observe(f);});
+
+/* click-to-play, shared by the Nantong frame and the Tianyue / Bihai case videos: the poster and the warm-gold ring button are the resting state — nothing autoplays and no native control bar shows. A click (or tap) hands the frame to the video with its native controls (pause included); when the clip ends, the controls step back and the gold button returns for another play */
+document.querySelectorAll('.ntvid').forEach(function(f){
+  var v=f.querySelector('video'),b=f.querySelector('.ntplay');
+  b.addEventListener('click',function(){v.setAttribute('controls','');var p=v.play();if(p&&p.catch)p.catch(function(){});});
+  v.addEventListener('play',function(){b.classList.add('off');});
+  v.addEventListener('ended',function(){v.removeAttribute('controls');b.classList.remove('off');});
+});
+
+/* dimensions tabs — all 9 originals from PPT p.48, re-homed per the original slide: the compass view layers plan (rotated as in the PPT) and nine-grid inside the transparent compass disc, on the white ground */
+var DIMS=[
+ {n:'平面布局',t:'先解決「怎麼住」，再談「好不好看」',d:'動線、採光、通風與功能分配在平面階段一次定清；布局錯了，再貴的裝修也救不回來。',main:'assets/s48-plan-sketch.jpg',big:1,alt:'黑白手繪平面布局圖：主臥、家庭廳、餐廳、廚房、中餐廚房、餐具間與洗衣房等分區，附英文標注與視線扇形分析'},
+ {n:'傳統居住智慧',t:'入户第一眼、方位與氣口，講的是居住的道理',d:'以傳統居住智慧看入户視線、方位與動線：講採光、通風與第一眼的秩序，不講玄虛。',layer:['assets/s48-2.png','assets/s48-8r.png','assets/s48-9x9.png'],alt:'羅盤圓盤疊加平面圖與九宮格，傳統居住智慧分析（原稿三層疊放）'},
+ {n:'小空間與家具',t:'小空間，靠家具尺度與場景預演取勝',d:'每一件家具的尺寸、朝向與使用場景提前預演：櫃體多深、通道多寬、坐下起身順不順手，都先在圖上過一遍——小空間，也能住出從容。',main:'assets/s48-5.png',alt:'家具節點與尺度手繪原稿'},
+ {n:'大空間軸測',t:'大空間，先用軸測把體量關係看透',d:'挑高、夾層與垂直動線以軸測推敲，避免大而空、空而散。',main:'assets/s48-6.png',alt:'大空間軸測分析圖（透明底原稿）'},
+ {n:'景觀小品',t:'景觀牆與庭院小品，是室內向外的延伸',d:'景觀牆、庭院與小品，和室內同圖設計：站在屋裡往外看的那一面牆、那一處景，先在圖紙上定好位置與尺度，窗景才成為日常的背景。',main:'assets/s48-3.jpg',alt:'景觀空間透視手繪原稿',pair:1,subs:[['assets/s48-7.jpg','景觀牆節點手繪原稿']]}
+];
+var dt=document.getElementById('dimtabs'),dv=document.getElementById('dimview');
+DIMS.forEach(function(d,i){var b=document.createElement('button');b.type='button';b.textContent=d.n;b.setAttribute('role','tab');if(i===0)b.className='on';b.addEventListener('click',function(){setDim(i);});dt.appendChild(b);});
+var curDim=0;
+function setDim(i){curDim=i;dv.classList.toggle('plan-big',!!DIMS[i].big);dt.querySelectorAll('button').forEach(function(el,j){el.classList.toggle('on',j===i);});
+  var d=DIMS[i],media='';
+  if(d.layer){media='<div class="layerbox"><img class="base" src="'+d.layer[0]+'" alt="" loading="lazy"><img class="mid" src="'+d.layer[1]+'" alt="" loading="lazy"><img class="over" src="'+d.layer[2]+'" alt="'+d.alt+'" loading="lazy"></div>';}
+  else if(d.pair){media='<div class="pairbox"><img class="pw" src="'+d.subs[0][0]+'" alt="'+d.subs[0][1]+'" loading="lazy"><img class="pm" src="'+d.main+'" alt="'+d.alt+'" loading="lazy"></div>';}
+  else{media='<img class="mainimg" src="'+d.main+'" alt="'+d.alt+'" loading="lazy">';}
+  if(d.subs&&!d.pair){media+='<div class="subs">'+d.subs.map(function(s){return '<img src="'+s[0]+'" alt="'+s[1]+'" loading="lazy">';}).join('')+'</div>';}
+  dv.innerHTML='<div class="dim-media">'+media+'</div><div><h3>'+d.t+'</h3><p>'+d.d+'</p></div>';}
+setDim(0);
+/* the five dimension views' entrances replay on scroll-in too: setDim(0) fires at page load, long before this section is on screen, so when the view arrives (after having been off-screen) the current tab is rebuilt and its entrance plays in view; tab switches replay it as before */
+var dimWasOut=true;
+var dimIO=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){if(dimWasOut){dimWasOut=false;setDim(curDim);}}else{dimWasOut=true;}});},{threshold:.5});
+dimIO.observe(dv);
+
+/* service flow 49P — the frame is 7:4. The strip (the 2x s49-1-2x.png, 4504x1234, so the zoom stays sharp) is served as per-stage slices that tile the artwork with no gaps and no lost pixels; in the overview they read as the single original image. Selecting a percentage chip — by hovering it on desktop, tapping it on touch — fires three synced moves over .72s cubic-bezier(.16,1,.3,1): the chip itself grows to 1.25x and turns gold while the others dim to 55%; the strip glides sideways to centre that stage and scales by frame-height / strip-display-height (recomputed from the 7:4 frame), so the zoomed stage fills the frame height exactly — top payment labels and bottom branches stay whole, nothing cropped, no empty band; and the highlight is done by the slices themselves — the selected stage's slices stay fully lit while the other five stages' slices dim to 35% with a slight desaturation (no overlay frame: a rectangle could never cover a whole stage, because two neighbouring stages' labels and branches interleave across the spine — the slice boundaries step sideways inside the artwork's empty bands so each stage's label and branches fall wholly inside its own slices). The two 5% chips each light two flow nodes together, as the payments fall due: the hidden-works 5% lights the construction-start stage plus the hidden-works node, and the completion 5% lights the mid-construction node plus the completion-acceptance node. On desktop the mouse leaving a chip glides back to the overview and moving onto another chip glides straight to it (a mouse click no longer switches); on touch, tapping the lit chip again glides back. Stage centres were measured off the artwork's own content extents. */
+var FLOWPCT=[['35%','概念方案階段前收取'],['20%','方案設計階段前收取'],['20%','深化設計階段前收取'],['15%','設計階段完畢收取'],['5%','隱蔽工程節點完畢'],['5%','全部竣工收取']];
+var fp=document.getElementById('flowpct'),fsc=document.getElementById('flowscroll'),fstrip=document.getElementById('flowstrip'),fslices=fstrip.querySelectorAll('img');
+var FLOWC=[11.0,33.3,38.8,50.1,66.8,91.9]; /* stage content centres along the strip, % — the two 5% groups are re-measured on their regrouped extents: chip 5 spans x 2456–3565 (centre 66.8%), chip 6 spans x 3776–4498 (centre 91.9%, clamped to the right edge by applyFlow) */
+var zoomStage=-1,flowTour=null,flowUser=false;
+function stopFlowAnim(){if(flowTour){clearInterval(flowTour);flowTour=null;}}
+function setFlowChip(i){fp.querySelectorAll('button').forEach(function(el,j){el.classList.toggle('on',j===i);el.setAttribute('aria-selected',j===i?'true':'false');});fp.classList.toggle('has-on',i>=0);}
+function applyFlow(i){
+  zoomStage=i;
+  if(i<0){fstrip.style.transform='';fstrip.classList.remove('focus');fslices.forEach(function(g){g.classList.remove('on');});setFlowChip(-1);return;}
+  var W=fsc.clientWidth,H=fsc.clientHeight,Hc=W*1234/4504,s=H/Hc;
+  var fx=FLOWC[i]/100,tx=W/2-s*fx*W,minTx=W-s*W;
+  if(tx>0)tx=0;if(tx<minTx)tx=minTx;
+  fstrip.style.transform='translate('+tx+'px,'+(-H/2)+'px) scale('+s+')';
+  fstrip.classList.add('focus');
+  fslices.forEach(function(g){g.classList.toggle('on',+g.getAttribute('data-s')===i);});
+  setFlowChip(i);
+}
+function flowZoom(i){flowUser=true;stopFlowAnim();applyFlow(zoomStage===i?-1:i);}
+var flowFine=window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+FLOWPCT.forEach(function(p,i){var b=document.createElement('button');b.type='button';b.setAttribute('role','tab');b.setAttribute('aria-selected','false');b.innerHTML='<b>'+p[0]+'</b><span>'+p[1]+'</span>';
+  /* stage switching is hover-driven on hover-capable pointers, exactly like the services strip and the design-flow boxes: resting on a chip fires the same three synced moves as the old click — the chip grows to 1.25x and turns gold while the others dim, the strip glides to centre that stage, and that stage's slices stay lit while the other five dim — and the first hover also stops the self-running tour, just as the first click used to. Leaving the chip glides back to the overview, and a mouse click no longer switches anything. Touch has no hover, so a tap still toggles there (tap the lit chip again to return to the overview); keyboard focus lights the stage on desktop. */
+  if(flowFine){
+    b.addEventListener('mouseenter',function(){flowUser=true;stopFlowAnim();applyFlow(i);});
+    b.addEventListener('mouseleave',function(){applyFlow(-1);});
+    b.addEventListener('focus',function(){flowUser=true;stopFlowAnim();applyFlow(i);});
+    b.addEventListener('blur',function(){applyFlow(-1);});
+  }else{
+    b.addEventListener('click',function(){flowZoom(i);});
+  }
+  fp.appendChild(b);});
+addEventListener('resize',function(){if(zoomStage>=0)applyFlow(zoomStage);});
+/* on view the stages tour by themselves — one glide every 2.5s, six stages in 15s, then back to the overview, chips and slice highlighting following; any interaction hands control back to the reader. Leaving the viewport stops the tour and re-arms it, so scrolling back replays it like every other entrance (it used to disconnect after the first play and never ran again) */
+var flowPlayed=false;
+fsc.addEventListener('pointerdown',function(){flowUser=true;stopFlowAnim();});fsc.addEventListener('wheel',function(){flowUser=true;stopFlowAnim();},{passive:true});fsc.addEventListener('touchstart',function(){flowUser=true;stopFlowAnim();},{passive:true});
+var flowIO=new IntersectionObserver(function(es){es.forEach(function(e){
+  if(!e.isIntersecting){flowPlayed=false;stopFlowAnim();return;}
+  if(flowPlayed)return;flowPlayed=true;
+  if(matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+  setTimeout(function(){
+    if(flowUser||flowTour)return;
+    var step=0;applyFlow(0);
+    flowTour=setInterval(function(){step++;if(step>=FLOWPCT.length){stopFlowAnim();applyFlow(-1);}else applyFlow(step);},2500);
+  },600);
+});},{threshold:.5});
+flowIO.observe(fsc);
+
+/* design flow 50P */
+var DFLOW=[
+ ['01','設計啟動階段',['制定《項目設計進度計劃表》','輔助客戶填寫《客戶設計需求表》','完成室內現狀勘測','完成空間測量圖']],
+ ['02','初步方案階段',['完成客戶設計需求分析','完成設計理念、設計思路定向','完成平面功能規劃方案','完成主空間風格定向','完成舒適系統需求定向']],
+ ['03','效果方案階段',['完成主空間效果方案','完成主空間產品初步選型','完成主空間舒適系統終端定位原則','完成主空間水電終端定位原則','完成輔空間風格定向']],
+ ['04','深化方案階段',['完成主、輔空間深化方案','完成空間與產品的主要搭接原則','完成主、輔空間產品選型方案','完成舒適系統與水電終端定位原則']],
+ ['05','施工圖階段',['繪製施工圖紙','確定施工圖紙','根據設計方案的實現，審核施工報價內容']],
+ ['06','產品方案階段',['完成設計實現配套產品方案','完成設備類產品方案','完成軟裝產品方案及預算']],
+ ['07','開工準備與開工',['輔助完成施工簽約','輔助完成產品簽約','開工大吉']]
+];
+var df=document.getElementById('dflow');
+var dfFine=window.matchMedia('(hover:hover) and (pointer:fine)').matches;
+DFLOW.forEach(function(s){var a=document.createElement('article');a.setAttribute('role','button');a.setAttribute('tabindex','0');a.setAttribute('aria-label',s[1]+(dfFine?'，懸停放大':'，點按放大'));a.innerHTML='<b>STAGE '+s[0]+'</b><h3>'+s[1]+'</h3><ul>'+s[2].map(function(x){return '<li>'+x+'</li>';}).join('')+'</ul>';
+  function open(){df.querySelectorAll('article').forEach(function(x){x.classList.remove('open');});a.classList.add('open');}
+  function shut(){a.classList.remove('open');}
+  function tog(){var was=a.classList.contains('open');df.querySelectorAll('article').forEach(function(x){x.classList.remove('open');});if(!was)a.classList.add('open');}
+  /* the zoom/highlight is hover-driven on hover-capable pointers, exactly like the services strip: whichever stage box the cursor rests on opens — the same 1.08x scale, gold edge and lit list as the old click — and a mouse click no longer opens it. Touch has no hover, so a tap still toggles there; keyboard focus opens the box on desktop, Enter/Space toggles it on touch. */
+  if(dfFine){a.addEventListener('mouseenter',open);a.addEventListener('mouseleave',shut);a.addEventListener('focus',open);a.addEventListener('blur',shut);}
+  else{a.addEventListener('click',tog);}
+  a.addEventListener('keydown',function(e){if(e.key==='Enter'||e.key===' '){e.preventDefault();if(dfFine)open();else tog();}});
+  df.appendChild(a);});
+
+/* calculator */
+var RATES={ /* band: [ [Ilo,Ihi],[IIlo,IIhi],[IIIlo,IIIhi] ] per sqm */
+ 1:[[400,600],[600,600],[850,850]],
+ 2:[[300,400],[400,600],[600,850]],
+ 3:[[200,300],[200,400],[300,600]]
+};
+var MINS={1:{1:40000,2:60000,3:85000}};
+var grade=2,svcMul=1,svcName='托管全案設計',svcConcept=false;
+var areaIn=document.getElementById('area'),areaRg=document.getElementById('arearange');
+function fmt(n){return Math.round(n).toLocaleString('zh-Hant-CN');}
+function fmtWan(n){var v=n/10000;return (Math.round(v*10)/10).toLocaleString('zh-Hant-CN');}
+function bandOf(a){return a<=500?1:(a<=1000?2:3);}
+function calc(){
+  var a=parseFloat(areaIn.value);if(isNaN(a)||a<1){a=0;}
+  var band=bandOf(a);
+  var billable=band===1?Math.max(a,100):a;
+  var effGrade=svcConcept?1:grade; /* the remote concept package never splits by complexity: it is always billed at grade I, rates and minimum alike */
+  var r=RATES[band][effGrade-1];
+  var lo=r[0]*billable,hi=r[1]*billable;
+  var min=MINS[band]&&MINS[band][effGrade];
+  if(min){lo=Math.max(lo,min);hi=Math.max(hi,min);}
+  var flo=lo*svcMul,fhi=hi*svcMul;
+  document.getElementById('bandnote').textContent='體量分檔：'+(band===1?'500㎡ 以內':band===2?'500–1000㎡':'1000㎡ 以上')+(band===1&&a<100?' · 不足 100㎡，按 100㎡ 計費':'');
+  var amt=document.getElementById('ramount');
+  if(flo===fhi){amt.innerHTML='¥ '+fmt(flo)+' <small>（約 '+fmtWan(flo)+' 萬元）</small>';}
+  else{amt.innerHTML='¥ '+fmt(flo)+' – '+fmt(fhi)+' <small>（約 '+fmtWan(flo)+' – '+fmtWan(fhi)+' 萬元）</small>';}
+  var gname={1:'Ⅰ 簡約實用',2:'Ⅱ 品質進階',3:'Ⅲ 奢華定制'}[effGrade];
+  var steps='<div>計費面積：<b>'+fmt(billable)+' ㎡</b>（申報 '+fmt(a)+' ㎡）</div>'
+    +'<div>適用單價：<b>'+(r[0]===r[1]?fmt(r[0]):fmt(r[0])+' – '+fmt(r[1]))+' 元/㎡</b>（'+gname+' · '+(band===1?'500㎡以內':band===2?'500–1000㎡':'1000㎡以上')+'）</div>'
+    +'<div>全案設計費：<b>'+(lo===hi?'¥ '+fmt(lo):'¥ '+fmt(lo)+' – '+fmt(hi))+'</b>'+(min?'（已按最低收費 ¥ '+fmt(min)+' 校驗）':'')+'</div>'
+    +(svcConcept?'<div>計費口徑：<b>異地概念包統一按簡約實用檔計費</b>，不分複雜程度</div>':'')
+    +(svcMul!==1?'<div>服務類型換算：'+svcName+' ＝ 全案設計費 × '+Math.round(svcMul*100)+'%</div>':'<div>服務類型：<b>'+svcName+'</b>（全額）</div>');
+  document.getElementById('rprocess').innerHTML=steps;
+}
+areaIn.addEventListener('input',function(){areaRg.value=Math.min(2000,Math.max(50,parseFloat(areaIn.value)||50));calc();});
+areaRg.addEventListener('input',function(){areaIn.value=areaRg.value;calc();});
+function segWire(id,fn){var seg=document.getElementById(id);seg.querySelectorAll('button').forEach(function(b){b.addEventListener('click',function(){seg.querySelectorAll('button').forEach(function(x){x.classList.remove('on');});b.classList.add('on');fn(b);calc();});});}
+segWire('gradeseg',function(b){grade=parseInt(b.getAttribute('data-g'),10);});
+function syncGradeLock(){var f=document.getElementById('gradefield');f.classList.toggle('locked',svcConcept);f.querySelectorAll('button').forEach(function(x){x.disabled=svcConcept;});}
+segWire('svcseg',function(b){svcMul=parseFloat(b.getAttribute('data-s'));svcName=b.childNodes[0].textContent.trim();svcConcept=(b.getAttribute('data-s')==='0.2');syncGradeLock();});
+syncGradeLock();
+calc();
+</script>
+</body>
+</html>
