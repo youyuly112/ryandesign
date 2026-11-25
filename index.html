@@ -172,6 +172,15 @@ body{padding-bottom:56px}
 .founder.in .bio-col{opacity:1}
 .founder p.bio{color:var(--ink2);font-size:15.5px;margin:0 0 14px;line-height:1.85}
 .founder p.bio-en{color:var(--ink3);font-size:13px;font-family:var(--en);letter-spacing:.02em;line-height:1.7;margin:0}
+.founder .fcontact{margin-top:26px;padding-top:18px;border-top:1px solid var(--line)}
+.founder .fcontact-label{font-family:var(--en);font-size:11px;letter-spacing:.42em;color:var(--gold);margin:0 0 10px;text-transform:uppercase}
+.founder .fcontact-item{display:flex;align-items:baseline;gap:10px;width:100%;padding:4px 0;background:none;border:0;cursor:pointer;font-family:var(--sans);text-align:left;color:var(--ink2)}
+.founder .fcontact-app{font-size:12px;color:var(--ink3);letter-spacing:.08em;min-width:64px}
+.founder .fcontact-id{font-size:14px;color:var(--ink2);letter-spacing:.04em}
+.founder .fcontact-item:hover .fcontact-id{color:var(--gold2)}
+.founder .fcontact-hint{font-size:11px;color:var(--ink3);opacity:1;transition:color .3s ease;margin-left:auto}
+.founder .fcontact-item:hover .fcontact-hint{color:var(--gold)}
+.founder .fcontact-item.copied .fcontact-hint{color:var(--gold2)}
 .founder .nameblock{position:absolute;right:1%;bottom:7%;z-index:2;text-align:right;opacity:0;transform:translateY(-48vh);transition:opacity .9s ease 0s,transform 1.55s cubic-bezier(.19,1.28,.32,1) .18s}
 .founder.in .nameblock{opacity:1;transform:none}
 .founder h3{font-size:clamp(32px,3.6vw,48px);margin:0 0 8px;font-weight:900;letter-spacing:.14em}
@@ -860,6 +869,11 @@ footer{padding:26px 0 10px;text-align:center;color:var(--ink3);font-size:12px;le
       <div class="bio-col">
         <p class="bio">進修於意大利巴勒莫美院，多次日本遊學。他曾任職於國內一線上市設計院副院長，並擁有與全球頂級設計事務所合作經歷，參與和主理過國內外多類型奢華別墅與知名酒店。</p>
         <p class="bio-en">Advanced Studies at Accademia di Belle Arti di Palermo, Italy, and multiple study tours in Japan. Former Vice President of a top-tier listed architectural design institute in China, with collaboration experience with world-renowned top design firms. He has participated in and led a wide range of luxury villas and prestigious hotels both domestically and internationally.</p>
+        <div class="fcontact">
+          <p class="fcontact-label">CONTACT</p>
+          <button type="button" class="fcontact-item" data-copy="ryanliu112"><span class="fcontact-app">WeChat</span><span class="fcontact-id">ryanliu112</span><span class="fcontact-hint">複製</span></button>
+          <button type="button" class="fcontact-item" data-copy="@ryanliu.interior"><span class="fcontact-app">WhatsApp</span><span class="fcontact-id">@ryanliu.interior</span><span class="fcontact-hint">複製</span></button>
+        </div>
       </div>
       <div class="nameblock">
         <h3>劉力寧</h3>
@@ -1604,6 +1618,32 @@ function syncGradeLock(){var f=document.getElementById('gradefield');f.classList
 segWire('svcseg',function(b){svcMul=parseFloat(b.getAttribute('data-s'));svcName=b.childNodes[0].textContent.trim();svcConcept=(b.getAttribute('data-s')==='0.2');syncGradeLock();});
 syncGradeLock();
 calc();
+document.querySelectorAll('.fcontact-item').forEach(function(btn){
+  btn.addEventListener('click',function(){
+    var val=btn.getAttribute('data-copy');
+    function done(){
+      var hint=btn.querySelector('.fcontact-hint');
+      btn.classList.add('copied');
+      if(hint){hint.textContent='已複製';}
+      setTimeout(function(){
+        btn.classList.remove('copied');
+        if(hint){hint.textContent='複製';}
+      },1600);
+    }
+    function fallback(){
+      var ta=document.createElement('textarea');
+      ta.value=val;
+      ta.style.position='fixed';ta.style.opacity='0';
+      document.body.appendChild(ta);
+      ta.select();
+      try{document.execCommand('copy');done();}catch(e){}
+      document.body.removeChild(ta);
+    }
+    if(navigator.clipboard&&navigator.clipboard.writeText){
+      navigator.clipboard.writeText(val).then(done).catch(fallback);
+    }else{fallback();}
+  });
+});
 </script>
 </body>
 </html>
